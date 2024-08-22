@@ -25,6 +25,7 @@ const Pictures: React.FC<PicturesProps> = ({ images }) => {
           className={styles.principalSwiper}
           spaceBetween={10}
           slidesPerView={1}
+          loop={true}  // Adicionando loop aqui
         >
           {images.map((image, index) => (
             <SwiperSlide key={index} className={styles.slide}>
@@ -46,6 +47,7 @@ const Pictures: React.FC<PicturesProps> = ({ images }) => {
           spaceBetween={10}
           slidesPerView={3}
           watchSlidesProgress
+          loop={true}  // Adicionando loop aqui
           className={styles.thumbnailsSwiper}
           centeredSlides
           slideToClickedSlide
