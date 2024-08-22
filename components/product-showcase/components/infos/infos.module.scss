@@ -17,7 +17,6 @@
   font-size: calc(16px + (30 - 16) * ((100vw - 1024px) / (1920 - 1024)));
   letter-spacing: 10%;
   text-transform: uppercase;
-  margin-bottom: 0.25vh;
 
   @media (max-width: 1024px) {
     font-size: 16px;
@@ -36,10 +35,10 @@
   }
 
   > button {
-    width: 2.6vw;
-    aspect-ratio: 1;
+    width: fit-content;
     border: 1px solid black;
     display: flex;
+    padding: 4px 8px;
     align-items: center;
     justify-content: center;
 
@@ -47,21 +46,26 @@
 
     @media (max-width: 1024px) {
       width: 4.63vw;
-      font-size: 12px;
+    }
+    > span {
+
+
+
+      @media (max-width: 1024px) {
+        font-size: 12px;
+      }
     }
   }
 }
 
 .sizes {
-  margin-top: 1vh;
+  margin-top: 2vh;
   display: flex;
   gap: 10px;
 
-
-   @media (max-width: 1024px) {
+  @media (max-width: 1024px) {
     margin-top: 1.5vh;
-  gap: 1vw;
-
+    gap: 1vw;
   }
   > button {
     width: 2.6vw;
@@ -95,7 +99,7 @@
     font-size: 12px;
   }
 
-   font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   color: #333;
@@ -114,7 +118,8 @@
       width: 100%;
     }
 
-    th, td {
+    th,
+    td {
       padding: 0.5em;
       border: 1px solid #ccc;
       text-align: left;

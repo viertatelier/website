@@ -1,7 +1,7 @@
 import { CTA } from "@/components/cta-component";
 import { Product } from "@/interfaces/contetfulData";
 import React from "react";
-import { Inter } from "next/font/google";
+import { Baskervville, Inter } from "next/font/google";
 import styles from "./infos.module.scss";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { markdownOptions } from "@/utils/markdownOptions";
@@ -9,6 +9,12 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
+
+const baskerville = Baskervville({
+  subsets: ["latin"],
+  weight: ['400'],
+});
+
 
 type InfosProps = {
   infos: Product;
@@ -76,30 +82,41 @@ const Infos: React.FC<InfosProps> = ({
       className="lg:pt-[19.54vh] lg:pl-[5.99vw] px-[9.01vw] pt-[5vh] lg:px-[unset] lg:pt-[unset]
     "
     >
-      <div className="mb-[3.75vh] lg:mb-[8.7vh]">
+      <div className="mb-[4vh]">
         <h3 className={`${inter.className} ${styles.name}`}>{name}</h3>
         <p className={`${inter.className} ${styles.price}`}>R$ {price}</p>
 
         <p className={`text-[14px] ${inter.className} ${styles.colors}`}>
           {colors.map((color) => {
-            if (color === "Cores Sob Consulta")
+            const colorLower = color.toLowerCase();
+
+            if (colorLower === "cores sob consulta")
               return (
                 <span key={color} className="capitalize">
                   {color}
                 </span>
               );
 
+            // traduzir para inglês a cor
+
             return (
               <button
                 key={color}
-                onClick={() => setColorSelected(color)}
+                onClick={() => {
+                  if (colorSelected === color) {
+                    setColorSelected(null);
+                    return;
+                  } else if (colorSelected === null) {
+                    setColorSelected(color);
+                    return;
+                  }
+                }}
                 style={{
-                  backgroundColor: color,
-                  border:
-                    color === colorSelected ? "1px solid var(--primary)" : "",
+                  backgroundColor: colorSelected === color ? 'black' : "",
+                  color: colorSelected === color ? 'white' : "",
                 }}
               >
-                <span className="capitalize">{color}</span>
+                <span className={baskerville.className}>{color}</span>
               </button>
             );
           })}
