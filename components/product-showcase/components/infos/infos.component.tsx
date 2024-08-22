@@ -12,9 +12,8 @@ const inter = Inter({
 
 const baskerville = Baskervville({
   subsets: ["latin"],
-  weight: ['400'],
+  weight: ["400"],
 });
-
 
 type InfosProps = {
   infos: Product;
@@ -112,8 +111,8 @@ const Infos: React.FC<InfosProps> = ({
                   }
                 }}
                 style={{
-                  backgroundColor: colorSelected === color ? 'black' : "",
-                  color: colorSelected === color ? 'white' : "",
+                  backgroundColor: colorSelected === color ? "black" : "",
+                  color: colorSelected === color ? "white" : "",
                 }}
               >
                 <span className={baskerville.className}>{color}</span>
@@ -133,7 +132,15 @@ const Infos: React.FC<InfosProps> = ({
                   className={`${size === sizeSelected ? styles.selected : ""} ${
                     styles.size
                   }`}
-                  onClick={() => setSizeSelected(size)}
+                  onClick={() => {
+                    if (sizeSelected === size) {
+                      setSizeSelected(null);
+                      return;
+                    } else if (sizeSelected === null) {
+                      setSizeSelected(size);
+                      return;
+                    }
+                  }}
                 >
                   <span className="capitalize">{size}</span>
                 </button>
