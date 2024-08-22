@@ -16,7 +16,7 @@ export const collections_data = {
     ],
     cta: {
       text: "Saiba Mais",
-      link: "#collections",
+      link: "/#collections",
     },
   },
   noivas_viert: {

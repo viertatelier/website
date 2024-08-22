@@ -2,12 +2,12 @@ export const navigation_data = [
     {
         id: 0,
         title: 'Quem somos',
-        url: '#about'
+        url: '/#about'
     },
     {
         id: 1,
         title: 'Coleções',
-        url: '#collections'
+        url: '/#collections'
     },
     {
         id: 2,
