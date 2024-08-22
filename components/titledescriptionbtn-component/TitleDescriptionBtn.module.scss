@@ -1,0 +1,10 @@
+.title {
+  font-weight: 300;
+  white-space: nowrap;
+  font-size: calc(32px + (54 - 32) * ((100vw - 1024px) / (1920 - 1024)));
+
+}
+
+.text {
+  font-size: calc(14px + (22 - 14) * ((100vw - 1024px) / (1920 - 1024)));
+}

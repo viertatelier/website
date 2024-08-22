@@ -1,0 +1,1 @@
+export {default as HeroBackground } from './Background.component';

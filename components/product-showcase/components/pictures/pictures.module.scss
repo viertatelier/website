@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: flex-end;
+
+  @media (max-width: 1024px) {
+    padding: 0 9.01vw;
+  }
+}
+
+.principal {
+  width: 41vw;
+  aspect-ratio: 0.688;
+  position: relative;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+}

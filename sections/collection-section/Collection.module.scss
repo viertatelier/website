@@ -1,0 +1,21 @@
+.title {
+  font-weight: 300;
+  white-space: nowrap;
+  color: black;
+  font-size: calc(55px + (75 - 55) * ((100vw - 1024px) / (1920 - 1024)));
+  width: 100%;
+}
+
+.text {
+  font-size: calc(18px + (22 - 18) * ((100vw - 1024px) / (1920 - 1024)));
+}
+
+.taylorText {
+    text-align: center;
+    font-size: calc(18px + (30 - 18) * ((100vw - 1024px) / (1920 - 1024)));
+
+    @media (max-width: 1024px){
+      font-size: 18px;
+    }
+
+}
