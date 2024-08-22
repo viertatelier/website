@@ -49,14 +49,15 @@
   position: relative;
   flex-shrink: 0; /* Impede que as thumbnails encolham */
 
-  &.active {
-    opacity: 0.6;
-    border: 2px solid #000;
-  }
-
   img {
     width: 100%; /* Garante que a imagem preencha a thumbnail */
     height: 100%; /* Garante que a imagem preencha a thumbnail */
     object-fit: cover;
   }
 }
+
+
+.active {
+    opacity: 0.6 !important;
+    border: 2px solid #000 !important;
+  }

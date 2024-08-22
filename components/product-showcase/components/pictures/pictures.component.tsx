@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs } from "swiper/modules";
 import "swiper/swiper-bundle.css"; // CSS do Swiper
@@ -13,6 +13,12 @@ type PicturesProps = {
 const Pictures: React.FC<PicturesProps> = ({ images }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    if (thumbsSwiper) {
+      thumbsSwiper.slideTo(activeIndex); // Atualiza a miniatura ativa
+    }
+  }, [activeIndex, thumbsSwiper]);
 
   return (
     <div className={styles.container}>
@@ -56,7 +62,9 @@ const Pictures: React.FC<PicturesProps> = ({ images }) => {
           {images.map((image, index) => (
             <SwiperSlide
               key={index}
-              className={`${styles.thumbnail} ${index === activeIndex ? styles.active : ""}`}
+              className={`${styles.thumbnail} ${
+                activeIndex === index
+                ? styles.active : ""}`}
             >
               <Image
                 src={image}
