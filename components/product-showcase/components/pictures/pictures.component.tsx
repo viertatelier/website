@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs } from "swiper/modules";
 import "swiper/swiper-bundle.css"; // CSS do Swiper
@@ -13,12 +13,15 @@ type PicturesProps = {
 const Pictures: React.FC<PicturesProps> = ({ images }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  
+  const mainSwiperRef = useRef<any>(null);
 
-  useEffect(() => {
-    if (thumbsSwiper) {
-      thumbsSwiper.slideTo(activeIndex); // Atualiza a miniatura ativa
+  const handleThumbnailClick = (index: number) => {
+    setActiveIndex(index);
+    if (mainSwiperRef.current && mainSwiperRef.current.swiper) {
+      mainSwiperRef.current.swiper.slideTo(index); // Corrigido o acesso à instância do Swiper
     }
-  }, [activeIndex, thumbsSwiper]);
+  };
 
   return (
     <div className={styles.container}>
@@ -31,6 +34,7 @@ const Pictures: React.FC<PicturesProps> = ({ images }) => {
           className={styles.principalSwiper}
           spaceBetween={10}
           slidesPerView={1}
+          ref={mainSwiperRef}
         >
           {images.map((image, index) => (
             <SwiperSlide key={index} className={styles.slide}>
@@ -54,15 +58,15 @@ const Pictures: React.FC<PicturesProps> = ({ images }) => {
           watchSlidesProgress
           className={styles.thumbnailsSwiper}
           slideToClickedSlide
-          onSwiper={(swiper) => setThumbsSwiper(swiper)}
-          ref={setThumbsSwiper}
+          onSwiper={setThumbsSwiper}
         >
           {images.map((image, index) => (
             <SwiperSlide
               key={index}
               className={`${styles.thumbnail} ${
-                activeIndex === index
-                ? styles.active : ""}`}
+                activeIndex === index ? styles.active : ""
+              }`}
+              onClick={() => handleThumbnailClick(index)}
             >
               <Image
                 src={image}
