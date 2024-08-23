@@ -43,16 +43,10 @@
     justify-content: center;
 
     transition: background-color 0.3s, color 0.3s;
-
-    @media (max-width: 1024px) {
-      width: 4.63vw;
-    }
+  
     > span {
-
-
-
       @media (max-width: 1024px) {
-        font-size: 12px;
+        font-size: 16px;
       }
     }
   }
@@ -78,8 +72,8 @@
     transition: background-color 0.3s, color 0.3s;
 
     @media (max-width: 1024px) {
-      width: 4.63vw;
-      font-size: 12px;
+      width: 48px;
+      font-size: 16px;
     }
   }
 

@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column; // Alinhar as imagens principais e thumbnails em coluna
   align-items: flex-end; // Manter o alinhamento à direita
-  justify-content: flex-end;
 
   @media (max-width: 1024px) {
     padding: 0 9.01vw;
@@ -10,7 +9,7 @@
 }
 
 .principal {
-  width: 41vw;
+  width: 35vw;
   aspect-ratio: 0.688;
   position: relative;
 
@@ -34,7 +33,12 @@
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  width: 41vw; // Mantém a largura das thumbnails proporcional à imagem principal
+  width: 35vw; // Mantém a largura das thumbnails proporcional à imagem principal
+
+  .thumbnailsSwiper {
+    width: 100%;
+
+  }
 
   @media (max-width: 1024px) {
     width: 100%;
@@ -42,8 +46,8 @@
 }
 
 .thumbnail {
-  width: 80px; /* Definindo a largura fixa */
-  height: 50px; /* Definindo a altura fixa */
+  width: 80px !important; /* Definindo a largura fixa */
+  aspect-ratio: 0.688; /* Definindo a altura fixa */
   overflow: hidden;
   cursor: pointer;
   position: relative;
