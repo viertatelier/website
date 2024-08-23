@@ -19,7 +19,7 @@ const Pictures: React.FC<PicturesProps> = ({ images }) => {
   const handleThumbnailClick = (index: number) => {
     setActiveIndex(index);
     if (mainSwiperRef.current && mainSwiperRef.current.swiper) {
-      mainSwiperRef.current.swiper.slideTo(index); // Corrigido o acesso à instância do Swiper
+      mainSwiperRef.current.swiper.slideTo(index);
     }
   };
 
