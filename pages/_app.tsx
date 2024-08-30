@@ -4,7 +4,7 @@ import { SmoothScrolling } from "@/components/SmoothScrolling-component";
 import { AppProvider } from "@/context/AppContext";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-
+import { Analytics } from "@vercel/analytics/react"
 import { Baskervville, Montserrat } from "next/font/google";
 import Head from "next/head";
 
@@ -86,6 +86,7 @@ export function App({ Component, pageProps }: AppProps) {
           </SmoothScrolling>
         </PageTransition>
       </AppProvider>
+      <Analytics />
     </>
   );
 }
