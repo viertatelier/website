@@ -30,7 +30,7 @@ const Content: React.FC<ContentProps> = ({ title = "Atelier Sob Medida" }) => {
           text="Descubra"
           mxAuto
           href={
-            "#about"
+            "/collection/festas-viert"
           }
         />
       )}
