@@ -1,5 +1,5 @@
 import { useApp } from "@/context/AppContext";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { background_data } from "@/data/background-data";
 import { getNextCollection } from "@/utils/getNextCollection";
 import gsap from "gsap";
@@ -34,7 +34,7 @@ const Background: React.FC<BackgroundProps> = ({ imagePos = "center" }) => {
   }, [activeBackground, setActiveBackground, activeCollection]);
 
   const fadeAnimation = useCallback(() => {
-    if (imageContainerRef.current) {
+    if (imageContainerRef.current && activeCollection !== "noivas") {
       gsap.to(imageContainerRef.current, {
         opacity: 0,
         filter: "blur(10px)",
@@ -90,7 +90,6 @@ const Background: React.FC<BackgroundProps> = ({ imagePos = "center" }) => {
               layout="fill"
               style={{ objectFit: "cover", objectPosition: imagePos }}
               loading="eager"
-              // blurDataURL={myBlurDataUrl}
             />
           ) : (
             <></>
@@ -107,8 +106,6 @@ const Background: React.FC<BackgroundProps> = ({ imagePos = "center" }) => {
                 layout="fill"
                 style={{ objectFit: "cover", objectPosition: imagePos }}
                 loading="eager"
-
-                // blurDataURL={myBlurDataUrl1}
               />
             ) : (
               <></>
