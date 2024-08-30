@@ -90,46 +90,6 @@ const Collection: React.FC = () => {
           </div>
         </div>
 
-        {/* NOIVAS VIERT */}
-        <div
-          className="bg-[#EFEFE9] pb-[7vh] flex flex-col gap-[5vh]"
-          id="collections"
-        >
-          <div
-            className="relative flex flex-col h-full w-full items-center justify-center"
-            style={{
-              aspectRatio: 1.2,
-            }}
-          >
-            <Image
-              className="object-cover bg-cover bg-center absolute"
-              layout="fill"
-              src={collections_data.noivas_viert.images[0].src}
-              alt={collections_data.noivas_viert.images[0].alt}
-            />
-
-            <div className="w-[40%] text-center z-10">
-              <h1
-                className={`${canelaFont.className} text-white italic text-[32px]`}
-              >
-                {collections_data.noivas_viert.title}
-                <br />
-                {collections_data.noivas_viert.subtitle}
-              </h1>
-            </div>
-          </div>
-          <div className="flex flex-col gap-[32px] items-center">
-            <p className="text-black text-center max-w-[80%]">
-              {collections_data.noivas_viert.description}
-            </p>
-            <CTA
-              text={collections_data.noivas_viert.cta.text}
-              onClick={() => navigateTo(collections_data.noivas_viert.cta.link)}
-              variant="secondary"
-            />
-          </div>
-        </div>
-
         {/* FESTAS VIERT */}
         <div
           className="
@@ -167,7 +127,7 @@ const Collection: React.FC = () => {
               text={collections_data.festas_viert.cta.text}
               variant="secondary"
               className="w-full text-[12px] text-nowrap"
-              onClick={()=>navigateTo(collections_data.festas_viert.cta.link)}
+              onClick={() => navigateTo(collections_data.festas_viert.cta.link)}
             />
           </div>
           <div
@@ -216,6 +176,46 @@ const Collection: React.FC = () => {
               className="object-cover bg-cover bg-center"
               src={collections_data.festas_viert.images[2].src}
               alt={collections_data.festas_viert.images[2].alt}
+            />
+          </div>
+        </div>
+
+        {/* NOIVAS VIERT */}
+        <div
+          className="bg-[#EFEFE9] pb-[7vh] flex flex-col gap-[5vh]"
+          id="collections"
+        >
+          <div
+            className="relative flex flex-col h-full w-full items-center justify-center"
+            style={{
+              aspectRatio: 1.2,
+            }}
+          >
+            <Image
+              className="object-cover bg-cover bg-center absolute"
+              layout="fill"
+              src={collections_data.noivas_viert.images[0].src}
+              alt={collections_data.noivas_viert.images[0].alt}
+            />
+
+            <div className="w-[40%] text-center z-10">
+              <h1
+                className={`${canelaFont.className} text-white italic text-[32px]`}
+              >
+                {collections_data.noivas_viert.title}
+                <br />
+                {collections_data.noivas_viert.subtitle}
+              </h1>
+            </div>
+          </div>
+          <div className="flex flex-col gap-[32px] items-center">
+            <p className="text-black text-center max-w-[80%]">
+              {collections_data.noivas_viert.description}
+            </p>
+            <CTA
+              text={collections_data.noivas_viert.cta.text}
+              onClick={() => navigateTo(collections_data.noivas_viert.cta.link)}
+              variant="secondary"
             />
           </div>
         </div>
@@ -313,36 +313,6 @@ const Collection: React.FC = () => {
           </div>
         </div>
 
-        {/* NOIVAS VIERT */}
-        <div
-          className="flex bg-[#EFEFE9] mt-[20vh] h-[79.90vh]"
-          id="collections"
-        >
-          <div
-            style={{
-              aspectRatio: 1.9,
-            }}
-            className="w-1/2 relative"
-          >
-            <Image
-              quality={100}
-              layout="fill"
-              className="object-center bg-bottom object-cover "
-              src={collections_data.noivas_viert.images[0].src}
-              alt={collections_data.noivas_viert.images[0].alt}
-            />
-          </div>
-          <div className="w-1/2 py-[7vh] md:py-[14vh] pl-[55px] text-black">
-            <TitleDescriptionBtn
-              title={collections_data.noivas_viert.title}
-              description={collections_data.noivas_viert.description}
-              navigationLink={collections_data.noivas_viert.cta.link}
-              btnText={collections_data.noivas_viert.cta.text}
-              descrNeedsToFit
-            />
-          </div>
-        </div>
-
         {/* FESTAS VIERT */}
         <div
           className="relative text-black mt-[20vh] mb-[17.5vh]"
@@ -406,6 +376,36 @@ const Collection: React.FC = () => {
                 alt={collections_data.festas_viert.images[1].alt}
               />
             </div>
+          </div>
+        </div>
+
+        {/* NOIVAS VIERT */}
+        <div
+          className="flex bg-[#EFEFE9] mt-[20vh] h-[79.90vh]"
+          id="collections"
+        >
+          <div
+            style={{
+              aspectRatio: 1.9,
+            }}
+            className="w-1/2 relative"
+          >
+            <Image
+              quality={100}
+              layout="fill"
+              className="object-center bg-bottom object-cover "
+              src={collections_data.noivas_viert.images[0].src}
+              alt={collections_data.noivas_viert.images[0].alt}
+            />
+          </div>
+          <div className="w-1/2 py-[7vh] md:py-[14vh] pl-[55px] text-black">
+            <TitleDescriptionBtn
+              title={collections_data.noivas_viert.title}
+              description={collections_data.noivas_viert.description}
+              navigationLink={collections_data.noivas_viert.cta.link}
+              btnText={collections_data.noivas_viert.cta.text}
+              descrNeedsToFit
+            />
           </div>
         </div>
 
