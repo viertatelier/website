@@ -11,6 +11,7 @@ import Layout from "@/layout/layout";
 import axios from "axios";
 import { InstaItem } from "@/sections/footer-section/Footer.section";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import { BreadCrumb } from "@/components/breadcrumb-component";
 
 const Product: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   insta,

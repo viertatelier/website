@@ -1,0 +1,46 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+  max-width: 70vw;
+  margin: 5vh auto -10vh;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    margin: unset;
+    padding: 5vh 9.01vw 0;
+    margin-bottom: -5vh;
+  }
+
+  ol {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+
+  .link {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .separator {
+    margin: 0 8px;
+    color: #999;
+  }
+
+  .collectionName {
+    color: #555;
+  }
+}
