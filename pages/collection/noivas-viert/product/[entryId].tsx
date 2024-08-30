@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -11,7 +11,6 @@ import Layout from "@/layout/layout";
 import axios from "axios";
 import { InstaItem } from "@/sections/footer-section/Footer.section";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import { BreadCrumb } from "@/components/breadcrumb-component";
 
 const Product: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   insta,
@@ -21,16 +20,16 @@ const Product: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
     query: { entryId },
   } = useRouter();
 
-  const getProductName = async () => {
+  const getProductName = useCallback(async () => {
     if (!entryId || Array.isArray(entryId)) return;
     const product = await getSingleEntry({ entryId });
     const treatedProduct = treatProduct(product as any);
     setName(treatedProduct.name);
-  };
+  }, [entryId]);
 
   useEffect(() => {
     getProductName();
-  }, [entryId]);
+  }, [entryId, getProductName]);
 
   return (
     <Layout insta={insta}>

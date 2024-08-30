@@ -20,7 +20,7 @@ const Background: React.FC<BackgroundProps> = ({ imagePos = "center" }) => {
   const imageContainerRef = useRef<HTMLDivElement>(null);
 
   const pathname = usePathname();
-  const activeCollection = pathname.includes("/collection/")
+  const activeCollection = pathname?.includes("/collection/")
     ? (pathname.split("/collection/")[1].split("-")[0] as "festas" | "noivas")
     : undefined;
 
