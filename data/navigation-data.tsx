@@ -17,13 +17,13 @@ export const navigation_data: NavigationDataProps[] = [
     submenu: [
       {
         id: 0,
-        title: "Noivas Viert",
-        url: "/collection/noivas-viert",
+        title: "Festas Viert",
+        url: "/collection/festas-viert",
       },
       {
         id: 1,
-        title: "Festas Viert",
-        url: "/collection/festas-viert",
+        title: "Noivas Viert",
+        url: "/collection/noivas-viert",
       },
     ],
   },
