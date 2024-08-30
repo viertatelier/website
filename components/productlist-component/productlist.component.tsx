@@ -28,6 +28,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, collection }) => {
         ease: "power3.inOut",
         onComplete: () => {
           setCurrentPage(newPage);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
           gsap.to(productListRef.current, {
             opacity: 1,
             x: 0,
