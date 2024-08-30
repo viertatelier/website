@@ -98,7 +98,7 @@ const Collection: React.FC = () => {
           grid-rows-2
           gap-[20px]
           mb-[5vh]
-          mt-[7vh]
+          mt-[0]
           md:mt-[120px]
           px-[20px]
           max-h-[800px]
@@ -229,6 +229,7 @@ const Collection: React.FC = () => {
           justify-center
           container 
           mx-auto
+          pt-[7vh]
         "
         >
           <p className={styles.taylorText + " max-w-[80%] mb-[5vh]"}>
