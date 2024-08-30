@@ -12,7 +12,7 @@ const Hamburguer: React.FC = () => {
     align-center
     w-[32px] h-[22px]
     cursor-pointer
-    z-50
+    z-[99999]
     "
       onClick={() => setMenuOpen(!menuOpen)}
     >

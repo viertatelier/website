@@ -1,1 +1,1 @@
-export { default as Navigation } from './Navigation.component';
+export { Navigation, NavigationMobile } from './Navigation.component';

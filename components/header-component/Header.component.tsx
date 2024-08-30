@@ -1,11 +1,11 @@
 import React from "react";
 import { Logo, Navigation, Midia, Hamburguer } from "@/components";
 import { useApp } from "@/context/AppContext";
-import Link from "next/link";
 
 const Header: React.FC = () => {
   const {
     device: { isDesktop },
+    menuOpen,
   } = useApp();
   return (
     <header
@@ -29,7 +29,7 @@ const Header: React.FC = () => {
             justifyContent: "flex-start",
           }}
         >
-          <Hamburguer />
+          {!menuOpen && <Hamburguer />}
         </div>
       )}
       <div
@@ -37,6 +37,7 @@ const Header: React.FC = () => {
           width: "100%",
           display: "flex",
           justifyContent: isDesktop ? "flex-start" : "center",
+          zIndex: 9999,
         }}
       >
         <Logo />

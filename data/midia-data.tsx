@@ -11,6 +11,6 @@ export const midia_data = [
     id: 1,
     title: "Whatsapp",
     icon: <FaWhatsapp />,
-    link: "https://wa.me/5547999999999",
+    link: "https://wa.me/5521994308880",
   },
 ];
