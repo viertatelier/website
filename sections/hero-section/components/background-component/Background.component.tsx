@@ -4,23 +4,34 @@ import { background_data } from "@/data/background-data";
 import { getNextCollection } from "@/utils/getNextCollection";
 import gsap from "gsap";
 import Image from "next/image";
-import getBase64 from "@/utils/getLocalBase64";
+import { usePathname } from "next/navigation";
 
 type BackgroundProps = {
   imagePos: "center" | "top";
 };
 
-const Background: React.FC<BackgroundProps> = ({
-  imagePos = "center",
-}) => {
+const Background: React.FC<BackgroundProps> = ({ imagePos = "center" }) => {
   const {
     device: { isDesktop },
-    activeBackground: { collection, index: itemIndex },
+    activeBackground,
     setActiveBackground,
   } = useApp();
 
   const imageContainerRef = useRef<HTMLDivElement>(null);
-  const [nextIndex, setNextIndex] = useState(1); // Track the next index for desktop view
+
+  const pathname = usePathname();
+  const activeCollection = pathname.includes("/collection/")
+    ? (pathname.split("/collection/")[1].split("-")[0] as "festas" | "noivas")
+    : undefined;
+
+  useEffect(() => {
+    if (!activeBackground) {
+      setActiveBackground(() => ({
+        collection: getNextCollection("yellow", activeCollection),
+        index: 0,
+      }));
+    }
+  }, [activeBackground, setActiveBackground, activeCollection]);
 
   const fadeAnimation = useCallback(() => {
     if (imageContainerRef.current) {
@@ -31,8 +42,11 @@ const Background: React.FC<BackgroundProps> = ({
         ease: "power1.inOut",
         onComplete: () => {
           setActiveBackground((prev) => ({
-            collection: getNextCollection(prev.collection),
-            index: prev.index === 0 ? 1 : 0,
+            collection: getNextCollection(
+              prev?.collection ?? "yellow",
+              activeCollection
+            ),
+            index: prev?.index === 0 ? 1 : 0,
           }));
           gsap.to(imageContainerRef.current, {
             opacity: 1,
@@ -43,7 +57,7 @@ const Background: React.FC<BackgroundProps> = ({
         },
       });
     }
-  }, [setActiveBackground]);
+  }, [setActiveBackground, activeCollection]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -53,17 +67,6 @@ const Background: React.FC<BackgroundProps> = ({
     return () => clearInterval(interval);
   }, [fadeAnimation]);
 
-  useEffect(() => {
-    if (isDesktop) {
-      setNextIndex((itemIndex + 1) % background_data[collection].length);
-    }
-  }, [collection, itemIndex, isDesktop]);
-
-  // const myBlurDataUrl = await getBase64(
-  //   background_data[collection][isDesktop ? 0 : itemIndex].src
-  // );
-  // const myBlurDataUrl1 = await getBase64(background_data[collection][1].src);
-
   return (
     <div className="absolute inset-0 w-full h-full z-[-1] bg-black">
       <div
@@ -71,30 +74,45 @@ const Background: React.FC<BackgroundProps> = ({
         className="relative w-full h-full grid grid-cols-1 lg:grid-cols-2"
       >
         <div className={`relative w-full h-full`}>
-          <Image
-            key={`${collection}-${itemIndex}`}
-            src={background_data[collection][isDesktop ? 0 : itemIndex].src}
-            alt={background_data[collection][isDesktop ? 0 : itemIndex].alt}
-            layout="fill"
-            style={{ objectFit: "cover", objectPosition: imagePos }}
-            loading="eager"
-            // blurDataURL={myBlurDataUrl}
-          />
+          {activeBackground?.collection ? (
+            <Image
+              key={`${activeBackground?.collection}-${activeBackground?.index}`}
+              src={
+                background_data[activeBackground?.collection][
+                  isDesktop ? 0 : activeBackground?.index
+                ].src
+              }
+              alt={
+                background_data[activeBackground?.collection][
+                  isDesktop ? 0 : activeBackground?.index
+                ].alt
+              }
+              layout="fill"
+              style={{ objectFit: "cover", objectPosition: imagePos }}
+              loading="eager"
+              // blurDataURL={myBlurDataUrl}
+            />
+          ) : (
+            <></>
+          )}
         </div>
 
         {isDesktop && (
           <div className={`relative w-full h-full`}>
-            <Image
-              key={`${collection}-${
-                (itemIndex + 1) % background_data[collection].length
-              }`}
-              src={background_data[collection][1].src}
-              alt={background_data[collection][1].alt}
-              layout="fill"
-              style={{ objectFit: "cover", objectPosition: imagePos }}
-              loading="eager"
-              // blurDataURL={myBlurDataUrl1}
-            />
+            {activeBackground?.collection ? (
+              <Image
+                key={`${activeBackground?.collection}-${activeBackground?.index}`}
+                src={background_data[activeBackground?.collection][1].src}
+                alt={background_data[activeBackground?.collection][1].alt}
+                layout="fill"
+                style={{ objectFit: "cover", objectPosition: imagePos }}
+                loading="eager"
+
+                // blurDataURL={myBlurDataUrl1}
+              />
+            ) : (
+              <></>
+            )}
           </div>
         )}
       </div>

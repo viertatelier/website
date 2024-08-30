@@ -24,12 +24,12 @@ type ContextProps = {
   activeBackground: {
     collection: "yellow" | "gray" | "black" | "mixed";
     index: number;
-  };
+  } | null;
   setActiveBackground: React.Dispatch<
     React.SetStateAction<{
       collection: "yellow" | "gray" | "black" | "mixed";
       index: number;
-    }>
+    } | null>
   >;
   menuOpen: boolean;
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -48,10 +48,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [activeBackground, setActiveBackground] = useState<{
     collection: "yellow" | "gray" | "black" | "mixed";
     index: number;
-  }>({
-    collection: "yellow",
-    index: 0,
-  });
+  } | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const checkWidth = () => {
