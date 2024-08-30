@@ -247,7 +247,7 @@ const Collection: React.FC = () => {
       <>
         {/* ATELIER VIERT */}
         <div
-          className="flex items-center justify-center gap-[50px] pt-[18vh]"
+          className="flex items-center justify-center gap-[50px] mt-[10vh]"
           style={{
             paddingLeft: "18.2%",
             paddingRight: "18.2%",
@@ -316,7 +316,7 @@ const Collection: React.FC = () => {
 
         {/* FESTAS VIERT */}
         <div
-          className="relative text-black mt-[20vh] mb-[17.5vh]"
+          className="relative text-black mt-[10vh] mb-[10vh]"
           style={{
             marginLeft: "18.2%",
             marginRight: "18.2%",
@@ -382,7 +382,7 @@ const Collection: React.FC = () => {
 
         {/* NOIVAS VIERT */}
         <div
-          className="flex bg-[#EFEFE9] mt-[20vh] h-[79.90vh]"
+          className="flex bg-[#EFEFE9] mt-[10vh] h-[79.90vh]"
           id="collections"
         >
           <div
@@ -411,7 +411,7 @@ const Collection: React.FC = () => {
         </div>
 
         {/* TAYLOR CALL */}
-        <div className="text-black my-[7vh] md:my-[120px] container mx-auto flex flex-col gap-[82px] items-center justify-center">
+        <div className="text-black my-[5vh] md:my-[10vh] container mx-auto flex flex-col gap-[82px] items-center justify-center">
           <p className={styles.taylorText}>
             {collections_data.taylor.description}
           </p>

@@ -3,44 +3,39 @@ import { Header } from "@/components";
 import { HeroBackground, HeroContent } from "./components";
 import { usePathname } from "next/navigation";
 
-const Hero: React.FC = () => {
-  const [title, setTitle] = useState("Atelier Sob Medida");
+const DEFAULT_TITLE = "Atelier Sob Medida";
 
-  const changeText = (collection: "Viert Festas" | "Viert Noivas") => {
-    switch (collection) {
-      case "Viert Festas":
-        return "Vestidos Festa";
-      case "Viert Noivas":
-        return "Vestidos Noivas";
-      default:
-        return "Atelier Sob Medida";
-    }
+const changeText = (collection: "Viert Festas" | "Viert Noivas" | "Default"): string => {
+  const titles = {
+    "Viert Festas": "Vestidos Festa",
+    "Viert Noivas": "Vestidos Noivas",
+    "Default": DEFAULT_TITLE,
   };
+  return titles[collection];
+};
 
+const Hero: React.FC = () => {
+  const [title, setTitle] = useState(DEFAULT_TITLE);
   const pathname = usePathname();
-
-  const isDefaultBg = title === "Atelier Sob Medida";
 
   useEffect(() => {
     if (!pathname) return;
 
-    if (pathname.includes("festa")) {
-      setTitle(changeText("Viert Festas"));
-    } else if (pathname.includes("noivas")) {
-      setTitle(changeText("Viert Noivas"));
-    } else {
-      setTitle("Atelier Sob Medida");
-    }
+    const getTitleBasedOnPath = () => {
+      if (pathname.includes("festa")) return changeText("Viert Festas");
+      if (pathname.includes("noivas")) return changeText("Viert Noivas");
+      if (pathname.includes("about")) return "Sobre Nós";
+      return DEFAULT_TITLE;
+    };
+
+    setTitle(getTitleBasedOnPath());
   }, [pathname]);
+
+  const isDefaultBg = title === DEFAULT_TITLE;
+
   return (
     <section
-      className="
-      relative
-      flex
-      flex-col
-      justify-center
-      w-full
-    "
+      className="relative flex flex-col justify-center w-full"
       style={{
         height: isDefaultBg ? "100vh" : "58.80vh",
       }}
