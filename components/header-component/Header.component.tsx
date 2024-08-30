@@ -7,6 +7,13 @@ const Header: React.FC = () => {
     device: { isDesktop },
     menuOpen,
   } = useApp();
+
+  const handleLogoClick = () => {
+    window.scrollTo(0, 0);
+    window.location.href = "/";
+  };
+
+
   return (
     <header
       className={`
@@ -39,6 +46,7 @@ const Header: React.FC = () => {
           justifyContent: isDesktop ? "flex-start" : "center",
           zIndex: 9999,
         }}
+        onClick={handleLogoClick}
       >
         <Logo />
       </div>
