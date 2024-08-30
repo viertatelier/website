@@ -4,31 +4,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "images.unsplash.com",
-      },
-      {
-        hostname: "img.freepik.com",
-      },
-      {
-        hostname: "images.ctfassets.net",
-      },
-      {
-        hostname: "scontent-gig4-1.cdninstagram.com",
-      },
-      {
-        hostname: "scontent-iad3-1.cdninstagram.com",
-      },
-      {
-        hostname: "scontent-iad3-2.cdninstagram.com",
-      },
-      {
-        hostname: "scontent.cdninstagram.com",
-      },
-      {
-        hostname: "scontent-gig4-2.cdninstagram.com",
-      },
-      {
-        hostname: "downloads.ctfassets.net",
+        protocol: "https",
+        hostname: "**",
       },
     ],
   },
