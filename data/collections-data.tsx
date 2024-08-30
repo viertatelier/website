@@ -31,8 +31,8 @@ export const collections_data = {
       },
     ],
     cta: {
-      text: "Conheça nossos vestidos",
-      link: "/collection/noivas-viert",
+      text: "Em Breve",
+      link: "/#collections",
     },
   },
 
