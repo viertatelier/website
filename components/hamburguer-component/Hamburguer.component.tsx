@@ -1,7 +1,11 @@
 import { useApp } from "@/context/AppContext";
 import React from "react";
 
-const Hamburguer: React.FC = () => {
+type HamburguerProps = {
+  lightMode?: "light" | "dark";
+};
+
+const Hamburguer: React.FC<HamburguerProps> = ({ lightMode = "light" }) => {
   const { menuOpen, setMenuOpen } = useApp();
 
   return (
@@ -17,34 +21,29 @@ const Hamburguer: React.FC = () => {
       onClick={() => setMenuOpen(!menuOpen)}
     >
       <div
-        className="
-            w-full h-[4px] bg-[#fff]
-            transition-all duration-300
-        "
+        className={`w-full h-[4px] transition-all duration-300`}
         style={{
           transform: menuOpen
             ? "rotate(45deg) translate(5px, 5px)"
             : "rotate(0) translate(0, 0)",
+          backgroundColor: lightMode === "light" ? "#fff" : "#000",
+          
         }}
       ></div>
       <div
-        className="
-            w-full h-[4px] bg-[#fff]
-            transition-all duration-300
-        "
+        className={`w-full h-[4px] transition-all duration-300`}
         style={{
           opacity: menuOpen ? 0 : 1,
+          backgroundColor: lightMode === "light" ? "#fff" : "#000",
         }}
       ></div>
       <div
-        className="
-            w-full h-[4px] bg-[#fff]
-            transition-all duration-300
-        "
+        className={`w-full h-[4px] transition-all duration-300`}
         style={{
           transform: menuOpen
             ? "rotate(-45deg) translate(8px, -8px)"
             : "rotate(0) translate(0, 0)",
+          backgroundColor: lightMode === "light" ? "#fff" : "#000",
         }}
       ></div>
     </div>

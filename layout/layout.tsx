@@ -6,17 +6,22 @@ import React, { ReactNode } from "react";
 type LayoutProps = {
   children: ReactNode;
   insta: InstaItem[];
+  remove?: "top-off" | "bottom-off";
 };
 
-const Layout: React.FC<LayoutProps> = ({ children, insta }) => {
+const Layout: React.FC<LayoutProps> = ({
+  children,
+  insta,
+  remove = undefined,
+}) => {
   return (
     <>
       <NavigationMobile />
       <div>
-      <Hero />
-      {children}
-      <Footer insta={insta} />
-    </div>
+        {remove === "top-off" ? null : <Hero />}
+        {children}
+        {remove === "bottom-off" ? null : <Footer insta={insta} />}
+      </div>
     </>
   );
 };

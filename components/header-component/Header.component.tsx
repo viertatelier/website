@@ -2,7 +2,12 @@ import React from "react";
 import { Logo, Navigation, Midia, Hamburguer } from "@/components";
 import { useApp } from "@/context/AppContext";
 
-const Header: React.FC = () => {
+type HeaderProps = {
+  lightMode?: "light" | "dark";
+};
+
+
+const Header: React.FC<HeaderProps> = ({lightMode}) => {
   const {
     device: { isDesktop },
     menuOpen,
@@ -36,7 +41,7 @@ const Header: React.FC = () => {
             justifyContent: "flex-start",
           }}
         >
-          {!menuOpen && <Hamburguer />}
+          {!menuOpen && <Hamburguer lightMode={lightMode} />}
         </div>
       )}
       <div
@@ -48,7 +53,7 @@ const Header: React.FC = () => {
         }}
         onClick={handleLogoClick}
       >
-        <Logo />
+        <Logo lightMode={lightMode}  />
       </div>
       {isDesktop && (
         <div
@@ -58,7 +63,7 @@ const Header: React.FC = () => {
             justifyContent: "center",
           }}
         >
-          <Navigation />
+          <Navigation lightMode={lightMode} />
         </div>
       )}
 
@@ -69,7 +74,7 @@ const Header: React.FC = () => {
           justifyContent: "flex-end",
         }}
       >
-        <Midia />
+        <Midia lightMode={lightMode} />
       </div>
     </header>
   );

@@ -10,7 +10,11 @@ const canelaFont = localFont({
   src: "../../styles/fonts/canela/CanelaText-LightItalic-Trial.otf",
 });
 
-const Navigation: React.FC = () => {
+type NavigationItem = {
+  lightMode?: "light" | "dark";
+};
+
+const Navigation: React.FC<NavigationItem> = ({lightMode = 'light'}) => {
   const handleMouseEnter = (e: React.MouseEvent<HTMLLIElement>) => {
     const submenu = e.currentTarget.querySelector("ul");
 
@@ -51,7 +55,7 @@ const Navigation: React.FC = () => {
             data-no-blobity
           >
             <a
-              className="uppercase text-white"
+              className={`uppercase text-[${lightMode === "light" ? "#fff" : "#000"}]`}
               href={navigation.url}
               data-no-blobity
             >
@@ -65,6 +69,9 @@ const Navigation: React.FC = () => {
                       href={subItem.url}
                       data-no-blobity
                       className={canelaFont.className}
+                      style={{
+                        color: lightMode === "light" ? "#fff" : "#000",
+                      }}
                     >
                       {subItem.title}
                     </a>
@@ -79,7 +86,7 @@ const Navigation: React.FC = () => {
   );
 };
 
-const NavigationMobile: React.FC = () => {
+const NavigationMobile: React.FC<NavigationItem> = ({lightMode}) => {
   const { menuOpen, setMenuOpen } = useApp();
 
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -123,7 +130,7 @@ const NavigationMobile: React.FC = () => {
             zIndex: 9999,
           }}
         >
-          <Hamburguer />
+          <Hamburguer lightMode={lightMode} />
         </div>
       )}
       <ul>
@@ -133,6 +140,9 @@ const NavigationMobile: React.FC = () => {
               href={navigation.url}
               onClick={() => {
                 setMenuOpen(false);
+              }}
+              style={{
+                color: lightMode === "light" ? "#fff" : "#000",
               }}
             >
               {navigation.title}
