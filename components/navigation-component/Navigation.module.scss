@@ -17,11 +17,11 @@
     .submenu {
       position: absolute;
       top: 100%;
-      left: 0;
+      left: -10px;
       border-radius: 5px;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-10px);
+      transform: translateY(-10px) ;
       transition: opacity 0.3s ease, transform 0.3s ease;
       backdrop-filter: blur(5px);
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
