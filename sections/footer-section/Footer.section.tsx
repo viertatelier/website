@@ -58,7 +58,7 @@ const Footer: React.FC<FooterProps> = ({ insta }) => {
 
       <footer
         className="flex flex-col items-center justify-center text-black pt-[7vh] md:pt-[120px] font-normal bg-[#EFEFE9]"
-        id="contact"
+        
       >
         <div className={`flex flex-col items-center`}>
           <div

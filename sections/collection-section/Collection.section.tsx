@@ -220,6 +220,7 @@ const Collection: React.FC = () => {
           </div>
         </div>
 
+        <div  id="contact" />
         {/* TAYLOR CALL */}
         <div
           className="
@@ -409,6 +410,10 @@ const Collection: React.FC = () => {
             />
           </div>
         </div>
+
+        <div  id="contact" />
+
+        
 
         {/* TAYLOR CALL */}
         <div className="text-black my-[5vh] md:my-[10vh] container mx-auto flex flex-col gap-[82px] items-center justify-center">

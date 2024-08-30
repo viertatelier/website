@@ -30,6 +30,6 @@ export const navigation_data: NavigationDataProps[] = [
   {
     id: 2,
     title: "Contato",
-    url: "#contact",
+    url: "/#contact",
   },
 ];
