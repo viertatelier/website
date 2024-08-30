@@ -1,8 +1,8 @@
 export const navigation_data = [
     {
         id: 0,
-        title: 'Quem somos',
-        url: '/#about'
+        title: 'Home',
+        url: '/'
     },
     {
         id: 1,
