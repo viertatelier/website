@@ -8,8 +8,8 @@ type NavigationDataProps = {
 export const navigation_data: NavigationDataProps[] = [
   {
     id: 0,
-    title: "Quem somos",
-    url: "#about",
+    title: "Home",
+    url: "/",
   },
   {
     id: 1,
