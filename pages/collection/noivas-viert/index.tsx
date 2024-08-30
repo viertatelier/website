@@ -18,9 +18,9 @@ function NoivasViert({
       <div className="container mx-auto pt-[5.47vh] pb-[4.22vh] lg:pb-[12.69vh] px-[2.04vw] bg-white">
         <Head>
           <title>Noivas Viert</title>
-          <meta name="description" content="Festas Viert" />
+          <meta name="description" content="Noivas Viert" />
         </Head>
-        <ProductList products={products} />
+        <ProductList products={products} collection="noivas" />
       </div>
     </Layout>
   );

@@ -20,7 +20,7 @@ function FestasViert({
           <title>Festas Viert</title>
           <meta name="description" content="Festas Viert" />
         </Head>
-        <ProductList products={products} />
+        <ProductList products={products} collection={'festas'} />
       </div>
     </Layout>
   );
