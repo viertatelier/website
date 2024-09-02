@@ -5,6 +5,7 @@ import gsap from "gsap";
 import localFont from "next/font/local";
 import { useApp } from "@/context/AppContext";
 import { Hamburguer } from "../hamburguer-component";
+import { usePathname } from "next/navigation";
 
 const canelaFont = localFont({
   src: "../../styles/fonts/canela/CanelaText-LightItalic-Trial.otf",
@@ -42,6 +43,7 @@ const Navigation: React.FC<NavigationItem> = ({lightMode = 'light'}) => {
       submenu.classList.remove(styles.submenuVisible);
     }
   };
+
 
   return (
     <nav>
@@ -140,9 +142,6 @@ const NavigationMobile: React.FC<NavigationItem> = ({lightMode}) => {
               href={navigation.url}
               onClick={() => {
                 setMenuOpen(false);
-              }}
-              style={{
-                color: lightMode === "light" ? "#fff" : "#000",
               }}
             >
               {navigation.title}
