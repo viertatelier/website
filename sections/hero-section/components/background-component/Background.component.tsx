@@ -87,7 +87,7 @@ const Background: React.FC<BackgroundProps> = ({ imagePos = "center" }) => {
                   isDesktop ? 0 : activeBackground?.index
                 ].alt
               }
-              layout="fill"
+              fill
               style={{ objectFit: "cover", objectPosition: imagePos }}
               loading="eager"
             />
@@ -103,7 +103,7 @@ const Background: React.FC<BackgroundProps> = ({ imagePos = "center" }) => {
                 key={`${activeBackground?.collection}-${activeBackground?.index}`}
                 src={background_data[activeBackground?.collection][1].src}
                 alt={background_data[activeBackground?.collection][1].alt}
-                layout="fill"
+                fill
                 style={{ objectFit: "cover", objectPosition: imagePos }}
                 loading="eager"
               />

@@ -42,7 +42,7 @@ const Pictures: React.FC<PicturesProps> = ({ images, ...props }) => {
                 <Image
                   src={image}
                   alt={`Imagem do Produto (${index + 1})`}
-                  layout="fill"
+                  fill
                   style={{ objectFit: "cover" }}
                 />
               </div>
@@ -71,7 +71,7 @@ const Pictures: React.FC<PicturesProps> = ({ images, ...props }) => {
               <Image
                 src={image}
                 alt={`Thumbnail (${index + 1})`}
-                layout="fill"
+                fill
                 style={{ objectFit: "cover" }}
               />
             </SwiperSlide>

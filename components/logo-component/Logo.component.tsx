@@ -16,7 +16,7 @@ const Logo: React.FC<LogoProps> = ({ lightMode = "light" }) => {
         <Image
           src={`/assets/brand/logo${lightMode === "dark" ? "-dark" : ''}.svg`}
           alt="logo"
-          layout="fill"
+          fill
         />
       </Link>
     </div>

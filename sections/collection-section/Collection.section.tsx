@@ -38,7 +38,7 @@ const Collection: React.FC = () => {
                 className="object-cover bg-cover bg-center"
                 src={collections_data.atelier_viert.images[0].src}
                 alt={collections_data.atelier_viert.images[0].alt}
-                layout="fill"
+                fill
                 loading="eager"
               />
             </div>
@@ -50,7 +50,7 @@ const Collection: React.FC = () => {
             >
               <Image
                 className="object-cover bg-cover bg-center"
-                layout="fill"
+                fill
                 src={collections_data.atelier_viert.images[1].src}
                 alt={collections_data.atelier_viert.images[1].alt}
                 loading="eager"
@@ -141,7 +141,7 @@ const Collection: React.FC = () => {
             <Image
               quality={100}
               className="object-cover bg-cover bg-center"
-              layout="fill"
+              fill
               src={collections_data.festas_viert.images[1].src}
               alt={collections_data.festas_viert.images[1].alt}
             />
@@ -157,7 +157,7 @@ const Collection: React.FC = () => {
             <Image
               quality={100}
               className="object-cover bg-cover bg-center "
-              layout="fill"
+              fill
               src={collections_data.festas_viert.images[0].src}
               alt={collections_data.festas_viert.images[0].alt}
             />
@@ -172,7 +172,7 @@ const Collection: React.FC = () => {
           >
             <Image
               quality={100}
-              layout="fill"
+              fill
               className="object-cover bg-cover bg-center"
               src={collections_data.festas_viert.images[2].src}
               alt={collections_data.festas_viert.images[2].alt}
@@ -193,7 +193,7 @@ const Collection: React.FC = () => {
           >
             <Image
               className="object-cover bg-cover bg-center absolute"
-              layout="fill"
+              fill
               src={collections_data.noivas_viert.images[0].src}
               alt={collections_data.noivas_viert.images[0].alt}
             />
@@ -269,7 +269,7 @@ const Collection: React.FC = () => {
             >
               <Image
                 quality={100}
-                layout="fill"
+                fill
                 className="object-cover"
                 src={collections_data.atelier_viert.images[0].src}
                 alt={collections_data.atelier_viert.images[0].alt}
@@ -306,7 +306,7 @@ const Collection: React.FC = () => {
             >
               <Image
                 className="object-cover bg-center pt-[40px]"
-                layout="fill"
+                fill
                 loading="eager"
                 src={collections_data.atelier_viert.images[1].src}
                 alt={collections_data.atelier_viert.images[1].alt}
@@ -341,7 +341,7 @@ const Collection: React.FC = () => {
               }}
             >
               <Image
-                layout="fill"
+                fill
                 className="object-cover"
                 src={collections_data.festas_viert.images[2].src}
                 alt={collections_data.festas_viert.images[2].alt}
@@ -359,7 +359,7 @@ const Collection: React.FC = () => {
               }}
             >
               <Image
-                layout="fill"
+                fill
                 className="object-cover"
                 src={collections_data.festas_viert.images[0].src}
                 alt={collections_data.festas_viert.images[0].alt}
@@ -372,7 +372,7 @@ const Collection: React.FC = () => {
               }}
             >
               <Image
-                layout="fill"
+                fill
                 className="object-cover"
                 src={collections_data.festas_viert.images[1].src}
                 alt={collections_data.festas_viert.images[1].alt}
@@ -394,7 +394,7 @@ const Collection: React.FC = () => {
           >
             <Image
               quality={100}
-              layout="fill"
+              fill
               className="object-center bg-bottom object-cover "
               src={collections_data.noivas_viert.images[0].src}
               alt={collections_data.noivas_viert.images[0].alt}

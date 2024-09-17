@@ -17,7 +17,7 @@ const BGImage = ({
       <Image
         src={src}
         alt={alt}
-        layout="fill"
+        fill
         style={{ objectFit: "cover" }}
         loading="eager"
         // blurDataURL={myBlurDataUrl}

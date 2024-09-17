@@ -44,7 +44,7 @@ export default function ProductCard({
       >
         <div ref={imageRef1} className="absolute inset-0 opacity-1">
           <Image
-            layout="fill"
+            fill
             src={images[0]} // Primeira imagem
             alt="Product"
             className="object-cover bg-center"
@@ -52,7 +52,7 @@ export default function ProductCard({
         </div>
         <div ref={imageRef2} className="absolute inset-0 opacity-0">
           <Image
-            layout="fill"
+            fill
             src={images[1]} // Segunda imagem
             alt="Product Hover"
             className="object-cover bg-center"

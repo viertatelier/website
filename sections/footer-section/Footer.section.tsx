@@ -38,7 +38,7 @@ const Footer: React.FC<FooterProps> = ({ insta }) => {
       {isMobile ? (
         <div className="relative h-[360px] mt-[7vh] md:mt-[120px] w-full">
           <Image
-            layout="fill"
+            fill
             className="absolute bg-cover h-full object-cover bg-center"
             src={collections_data.festas_viert.images[3].src}
             alt={collections_data.festas_viert.images[3].alt}
@@ -48,7 +48,7 @@ const Footer: React.FC<FooterProps> = ({ insta }) => {
         <div className="relative h-[64.17vh]  w-full">
           <Image
             quality={100}
-            layout="fill"
+            fill
             className="absolute bg-cover  h-full object-cover bg-top"
             src={collections_data.festas_viert.images[3].src}
             alt={collections_data.festas_viert.images[3].alt}
@@ -86,7 +86,7 @@ const Footer: React.FC<FooterProps> = ({ insta }) => {
                     <Image
                       src={image.media_url}
                       alt={"instagram-image-" + index}
-                      layout="fill"
+                      fill
                       className={`w-full h-full absolute object-cover bg-center`}
                     />
                   </div>

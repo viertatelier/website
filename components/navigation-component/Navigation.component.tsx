@@ -5,7 +5,6 @@ import gsap from "gsap";
 import localFont from "next/font/local";
 import { useApp } from "@/context/AppContext";
 import { Hamburguer } from "../hamburguer-component";
-import { usePathname } from "next/navigation";
 
 const canelaFont = localFont({
   src: "../../styles/fonts/canela/CanelaText-LightItalic-Trial.otf",

@@ -3,8 +3,6 @@ import { Product } from "@/interfaces/contetfulData";
 import React from "react";
 import { Baskervville, Inter } from "next/font/google";
 import styles from "./infos.module.scss";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { markdownOptions } from "@/utils/markdownOptions";
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
