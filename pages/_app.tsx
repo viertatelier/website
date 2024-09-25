@@ -69,7 +69,6 @@ export function App({ Component, pageProps }: AppProps) {
         id="handtalk"
         src="https://plugin.handtalk.me/web/latest/handtalk.min.js"
         onLoad={() => {
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           // @ts-ignore
           const ht = new HT({
             token: '35e4d8e605f76afdf8ac6af37efb065c',
