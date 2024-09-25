@@ -1,4 +1,3 @@
-import getBase64 from "@/utils/getLocalBase64";
 import Image from "next/image";
 
 const BGImage = ({
