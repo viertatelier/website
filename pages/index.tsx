@@ -15,13 +15,29 @@ export const getStaticProps = async () => {
   const token = process.env.INSTA_TOKEN;
   const fields = "media_url,media_type,permalink";
   const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
-  const { data } = await axios.get(url);
-  return {
-    props: {
-      insta: data.data,
-    },
-    revalidate: 60 * 5, // 5 minutes
-  };
+
+
+  try {
+    const { data } = await axios.get(url);
+
+    return {
+      props: {
+        insta: data.data,
+      },
+      revalidate: 60 * 5, // 5 minutes
+    };
+
+
+  } catch (error) {
+    console.log(error);
+    return {
+      props: {
+        insta: [],
+      },
+      revalidate: 60 * 5, // 5 minutes
+    };
+  }
+
 };
 
 export default Home;

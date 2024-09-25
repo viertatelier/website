@@ -134,10 +134,9 @@ const Infos: React.FC<InfosProps> = ({
                     if (sizeSelected === size) {
                       setSizeSelected(null);
                       return;
-                    } else if (sizeSelected === null) {
-                      setSizeSelected(size);
-                      return;
                     }
+
+                    setSizeSelected(size);
                   }}
                 >
                   <span className="capitalize">{size}</span>
