@@ -83,10 +83,14 @@ export function App({ Component, pageProps }: AppProps) {
         }}
       />
       <Script
+        id='gtm-script'
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-Y8VN1KJJZP"
       ></Script>
-      <Script>
+      <Script
+        id='gtm-script-2'
+        strategy='lazyOnload'
+      >
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
