@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
+
+
+const BASE_PATH = '';
+const BASE_URL = '/';
+const BASE_PREFIX = `${BASE_PATH}/`;
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -11,17 +17,9 @@ const nextConfig = {
   },
   env: {
     INSTA_TOKEN: process.env.INSTA_TOKEN,
-  },
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback.fs = false;
-      config.resolve.fallback.tls = false;
-      config.resolve.fallback.net = false;
-      config.resolve.fallback.child_process = false;
-    }
-
-    return config;
-  },
+    BASE_PREFIX,
+    BASE_URL,
+  }
 };
 
 export default nextConfig;

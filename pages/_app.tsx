@@ -7,6 +7,7 @@ import type { AppProps } from "next/app";
 import { Analytics } from "@vercel/analytics/react"
 import { Baskervville, Montserrat } from "next/font/google";
 import Head from "next/head";
+import Script from "next/script";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -87,6 +88,36 @@ export function App({ Component, pageProps }: AppProps) {
         </PageTransition>
       </AppProvider>
       <Analytics />
+            <Script
+        src={`${process.env.BASE_PREFIX}gtm.script.js`}
+        id="gtagscript"
+        strategy="afterInteractive"
+      />
+      <Script
+        defer
+        strategy="afterInteractive"
+        src={`${process.env.BASE_PREFIX}hotjar.script.js`}
+        id="hotjar"
+      />
+      <Script
+        defer
+        strategy="lazyOnload"
+        id="handtalk"
+        src="https://plugin.handtalk.me/web/latest/handtalk.min.js"
+        onLoad={() => {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          // @ts-ignore
+          const ht = new HT({
+            token: '35e4d8e605f76afdf8ac6af37efb065c',
+            avatar: 'MAYA',
+            opacity: 0,
+            highContrast: true,
+            mobileConfig: {
+              align: 'top',
+            },
+          });
+        }}
+      />
     </>
   );
 }

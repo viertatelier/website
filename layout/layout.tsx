@@ -1,7 +1,8 @@
 import { NavigationMobile } from "@/components/navigation-component";
 import { Footer, Hero } from "@/sections";
 import { InstaItem } from "@/sections/footer-section/Footer.section";
-import React, { ReactNode } from "react";
+import React, { ReactNode, Suspense } from "react";
+import Loading from '@/sections/loading';
 
 type LayoutProps = {
   children: ReactNode;
@@ -15,14 +16,14 @@ const Layout: React.FC<LayoutProps> = ({
   remove = undefined,
 }) => {
   return (
-    <>
+    <Suspense fallback={<Loading />}>
       <NavigationMobile />
       <div>
         {remove === "top-off" ? null : <Hero />}
         {children}
         {remove === "bottom-off" ? null : <Footer insta={insta} />}
       </div>
-    </>
+    </Suspense>
   );
 };
 
