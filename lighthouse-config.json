@@ -1,0 +1,6 @@
+{
+  "settings": {
+    "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
+    "skipAudits": ["unused-javascript"]
+  }
+}
