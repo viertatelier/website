@@ -3,6 +3,7 @@ import { Product } from "@/interfaces/contetfulData";
 import React from "react";
 import { Baskervville, Inter } from "next/font/google";
 import styles from "./infos.module.scss";
+import { currencyFormat } from "@/utils/functions";
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -81,7 +82,7 @@ const Infos: React.FC<InfosProps> = ({
     >
       <div className="mb-[4vh]">
         <h3 className={`${inter.className} ${styles.name}`}>{name}</h3>
-        <p className={`${inter.className} ${styles.price}`}>R$ {price}</p>
+        <p className={`${inter.className} ${styles.price}`}>{currencyFormat(price)}</p>
 
         <p className={`text-[14px] ${inter.className} ${styles.colors}`}>
           {colors.map((color) => {

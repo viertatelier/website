@@ -4,6 +4,7 @@ import { Product } from "@/interfaces/contetfulData";
 import styles from "./ProductCard.module.scss";
 import { useState, useRef, useEffect } from "react";
 import gsap from "gsap"; // Importando GSAP
+import { currencyFormat } from "@/utils/functions";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -61,7 +62,7 @@ export default function ProductCard({
       </div>
       <div className="flex flex-col items-start">
         <h3 className={"uppercase"}>{name}</h3>
-        <p className="text-lg font-bold">R$ {price}</p>
+        <p className="text-lg font-bold">{currencyFormat(price)}</p>
         <p className={`text-[14px]`}>
           {colors.length === 1
             ? colors[0]
