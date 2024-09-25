@@ -14,22 +14,25 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 
 const Product: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   insta,
+  product,
 }) => {
   const [name, setName] = useState<string>("");
-  const {
-    query: { entryId },
-  } = useRouter();
+  const { query, isFallback } = useRouter();
+  const { entryId } = query;
 
   const getProductName = useCallback(async () => {
     if (!entryId || Array.isArray(entryId)) return;
-    const product = await getSingleEntry({ entryId });
     const treatedProduct = treatProduct(product as any);
     setName(treatedProduct.name);
-  }, [entryId]);
+  }, [entryId, product]);
 
   useEffect(() => {
     getProductName();
   }, [entryId, getProductName]);
+
+  if (isFallback) {
+    return <div>Loading...</div>; // Adicione um loading para o fallback
+  }
 
   return (
     <Layout insta={insta}>
@@ -52,16 +55,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = (async (context) => {
+export const getStaticProps = (async ({ params }) => {
   const token = process.env.INSTA_TOKEN;
   const fields = "media_url,media_type,permalink";
   const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
+
+  // Buscando os dados do produto pelo `entryId`
+  const product = await getSingleEntry({ entryId: params?.entryId as string });
+
   try {
     const { data } = await axios.get(url);
 
     return {
       props: {
         insta: data.data,
+        product,
       },
       revalidate: 60 * 5, // 5 minutes
     };
@@ -70,6 +78,7 @@ export const getStaticProps = (async (context) => {
     return {
       props: {
         insta: [],
+        product,
       },
       revalidate: 60 * 5, // 5 minutes
     };
