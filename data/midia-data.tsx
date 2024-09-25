@@ -1,16 +1,17 @@
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { brandLinks } from '@/constants';
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 export const midia_data = [
   {
     id: 0,
-    title: "Instagram",
+    title: 'Instagram',
     icon: <FaInstagram />,
-    link: "https://www.instagram.com/viert_atelier/",
+    link: brandLinks.instagram,
   },
   {
     id: 1,
-    title: "Whatsapp",
+    title: 'Whatsapp',
     icon: <FaWhatsapp />,
-    link: "https://wa.me/5521994308880",
+    link: brandLinks.whatsapp,
   },
 ];

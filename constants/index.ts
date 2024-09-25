@@ -53,41 +53,15 @@ export const metaTags: MetaType = {
 };
 
 export const brandLinks = {
-  mainUrl: 'https://fastback.fiat.com.br',
-  privacyPolicy:
-    'https://www.fiat.com.br/politica-de-privacidade.html',
-  twitter: 'https://www.instagram.com/fiatbr',
-  facebook: 'https://www.facebook.com/fiatbr',
-  instagram: 'https://www.instagram.com/fiatbr',
-  youtube: 'https://www.youtube.com/@fiatbr',
-};
+    mainUrl: 'https://viertatelier.com',
+    instagram: 'https://www.instagram.com/viert_atelier',
+    whatsapp: 'https://wa.me/5521994308880',
+  
 
-export const STATES = [
-  'AC',
-  'AL',
-  'AP',
-  'AM',
-  'BA',
-  'CE',
-  'DF',
-  'ES',
-  'GO',
-  'MA',
-  'MT',
-  'MS',
-  'MG',
-  'PA',
-  'PB',
-  'PR',
-  'PE',
-  'PI',
-  'RJ',
-  'RN',
-  'RS',
-  'RO',
-  'RR',
-  'SC',
-  'SP',
-  'SE',
-  'TO',
-];
+
+//   privacyPolicy:
+//     'https://www.fiat.com.br/politica-de-privacidade.html',
+//   twitter: 'https://www.instagram.com/fiatbr',
+//   facebook: 'https://www.facebook.com/fiatbr',
+//   youtube: 'https://www.youtube.com/@fiatbr',
+};
