@@ -78,7 +78,6 @@ export const getStaticProps = (async ({ params }) => {
       revalidate: 60 * 5, // 5 minutes
     };
   } catch (error) {
-    console.log(error);
     return {
       props: {
         product, // Dados do produto

@@ -51,7 +51,6 @@ export const getStaticProps = async () => {
       revalidate: 60 * 5, // 5 minutes
     };
   } catch (error) {
-    console.log(error);
     return {
       props: {
         insta: [],
