@@ -82,6 +82,19 @@ export function App({ Component, pageProps }: AppProps) {
           });
         }}
       />
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-Y8VN1KJJZP"
+      ></Script>
+      <Script>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-Y8VN1KJJZP');
+        `}
+      </Script>
     </>
   );
 }
