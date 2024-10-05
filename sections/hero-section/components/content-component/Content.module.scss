@@ -2,6 +2,7 @@
   font-weight: 300;
   white-space: nowrap;
   font-size: calc(75px + (90 - 75) * ((100vw - 1024px) / (1920 - 1024)));
+color: #fff;
 
   /* Para telas de 768px a 1024px */
   @media (max-width: 1024px) and (min-width: 768px) {
@@ -21,6 +22,7 @@
 
 .text {
   font-size: calc(22px + (22 - 18) * ((100vw - 1024px) / (1920 - 1024)));
+color: #fff;
 
   @media (max-width: 1024px) and (min-width: 768px) {
     font-size: calc(18px + (22 - 18) * ((100vw - 768px) / (1024 - 768)));

@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const withPWA = require('next-pwa')({
-  dest: 'public'
+  dest: 'public',
 });
 const path = require('path');
 // const runtimeCaching = require('next-pwa/cache')
@@ -11,7 +11,7 @@ const BASE_PATH = '';
 const BASE_URL = '/';
 const BASE_PREFIX = `${BASE_PATH}/`;
 
-module.exports = withPWA({
+const settings = {
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -35,10 +35,14 @@ module.exports = withPWA({
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "**",
+        protocol: 'https',
+        hostname: '**',
       },
     ],
   },
-});
+};
 
+module.exports =
+  process.env.NODE_ENV === 'development'
+    ? settings
+    : withPWA(settings);
