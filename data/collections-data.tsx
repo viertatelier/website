@@ -59,7 +59,7 @@ export const collections_data = {
       },
     ],
     cta: {
-      text: "Conheça nossos vestidos",
+      text: (<>Conheça nossos<br/>vestidos</>),
       link: "/collection/festas-viert",
     },
   },

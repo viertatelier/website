@@ -1,7 +1,7 @@
 import React from "react";
 
 type CTAProps = {
-  text?: string;
+  text?: string | JSX.Element;
   href?: string;
   onClick?: () => void;
   variant?: "primary" | "secondary";
@@ -36,13 +36,13 @@ const CTA: React.FC<CTAProps> = ({
   if (href) {
     return (
       <a className={container_className} href={href}>
-        <span className="text-wrap">{text}</span>
+        <span className="text-nowrap text-center">{text}</span>
       </a>
     );
   } else {
     return (
       <button className={container_className} onClick={onClick}>
-        <span className="text-wrap">{text}</span>
+        <span className="text-nowrap text-center">{text}</span>
       </button>
     );
   }

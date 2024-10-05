@@ -6,7 +6,7 @@ type TitleDescriptionBtnProps = {
   title: string | React.ReactNode;
   description: string;
   navigationLink: string;
-  btnText: string;
+  btnText: string | JSX.Element;
   descrNeedsToFit: boolean;
 };
 
