@@ -3,4 +3,4 @@ export const currencyFormat = (value: number) => {
         style: "currency",
         currency: "BRL",
     });
-    }
+}

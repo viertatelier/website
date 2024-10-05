@@ -15,13 +15,13 @@ function NoivasViert({
 }) {
   return (
     <Layout insta={insta}>
-      <div className="container mx-auto pt-[5.47vh] pb-[4.22vh] lg:pb-[12.69vh] px-[2.04vw] bg-white">
+      <section className="container mx-auto pt-[5.47vh] pb-[4.22vh] lg:pb-[12.69vh] px-[2.04vw] bg-white">
         <Head>
           <title>Noivas Viert</title>
           <meta name="description" content="Noivas Viert" />
         </Head>
         <ProductList products={products} collection="noivas" />
-      </div>
+      </section>
     </Layout>
   );
 }
@@ -48,7 +48,7 @@ export const getStaticProps = async () => {
         insta: data.data,
         products,
       },
-      revalidate: 60 * 5, // 5 minutes
+      revalidate: 86400, // 1 day
     };
   } catch (error) {
     return {
@@ -56,7 +56,7 @@ export const getStaticProps = async () => {
         insta: [],
         products,
       },
-      revalidate: 60 * 5, // 5 minutes
+      revalidate: 86400, // 1 day
     };
   }
 };

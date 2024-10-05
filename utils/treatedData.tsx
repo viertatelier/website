@@ -1,17 +1,23 @@
 import { EntryProps, Product } from "@/interfaces/contetfulData";
 
-export const treatProduct = (products: EntryProps): Product => {
+
+export const productName = (product: EntryProps): string => {
+  return product.fields.name;
+}
+
+
+export const treatProduct = (product: EntryProps): Product => {
   const treatedProducts = {
-    collection: products.fields.collection as "Viert Festas" | "Viert Noivas",
-    name: products.fields.name,
-    description: products.fields.description,
-    price: products.fields.price,
-    sizes: products.fields.sizes as (34 | 35 | 36 | 37 | 38 | 39 | 40 | 42 | 44 | 46)[],
-    colors: products.fields.colors,
-    images: products.fields.images!.map(
+    collection: product.fields.collection as "Viert Festas" | "Viert Noivas",
+    name: product.fields.name,
+    description: product.fields.description,
+    price: product.fields.price,
+    sizes: product.fields.sizes as (34 | 35 | 36 | 37 | 38 | 39 | 40 | 42 | 44 | 46)[],
+    colors: product.fields.colors,
+    images: product.fields.images!.map(
       (image) => "https:" + image.fields.file.url
     ),
-    entryId: products.sys.id,
+    entryId: product.sys.id,
   };
 
   return treatedProducts;

@@ -1,6 +1,6 @@
 import { CTA } from '@/components';
 import { useApp } from '@/context/AppContext';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './Content.module.scss';
 import MouseScrollIndicator from '@/components/mouse-scroll-component';
 
@@ -17,7 +17,7 @@ const Content: React.FC<ContentProps> = ({
 
   return (
     <div className="flex flex-col items-center gap-y-[60px] w-full h-full justify-center relative">
-      <div className="flex flex-col items-center gap-y-[20vh] lg:gap-y-[60px]">
+      <div className="flex flex-col items-center gap-y-[15vh] lg:gap-y-[60px]">
         <div className="flex flex-col gap-y-[12px] lg:gap-y-[0] ">
           <h1 className={styles.title}>{title}</h1>
 
@@ -32,7 +32,7 @@ const Content: React.FC<ContentProps> = ({
 
         {title === 'Atelier Sob Medida' && (
           <CTA
-            text="Conheça nossos vestidos"
+            text={<>Conheça nossos<br/>vestidos</>}
             mxAuto
             href={'/collection/festas-viert'}
           />
@@ -40,7 +40,7 @@ const Content: React.FC<ContentProps> = ({
       </div>
 
       <div
-        className="absolute bottom-[10vh] w-fit flex items-center justify-center p-5"
+        className="absolute bottom-[12vh] w-fit flex items-center justify-center p-5"
         style={{
           // vamos fazer um background color com opacidade, bordar curvadas com efeito de glassmorphismo
           backgroundColor: 'rgba(255, 255, 255, 0.15)',

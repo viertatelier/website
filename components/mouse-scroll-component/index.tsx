@@ -20,9 +20,7 @@ const MouseScrollIndicator: React.FC = () => {
 
     }
     useEffect(() => {
-
         getLottie();
-
     }, []);
 
 

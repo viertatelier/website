@@ -17,7 +17,6 @@ const Logo: React.FC<LogoProps> = ({ lightMode = "light" }) => {
           src={`/assets/brand/logo${lightMode === "dark" ? "-dark" : ''}.svg`}
           alt="logo"
           fill
-          fetchPriority="high"
         />
       </Link>
     </div>

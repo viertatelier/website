@@ -1,3 +1,4 @@
+import { EntryProps } from "@/interfaces/contetfulData";
 import { createClient } from "contentful";
 
 type SingleEntryParams = {
