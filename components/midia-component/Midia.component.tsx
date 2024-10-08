@@ -7,7 +7,7 @@ type MidiaItem = {
   lightMode?: "light" | "dark";
 };
 
-const Midia: React.FC<MidiaItem> = ({ lightMode = "light" }) => {
+const Midia: React.FC<MidiaItem> = () => {
   return (
     <ul
       className={`
