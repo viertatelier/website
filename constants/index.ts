@@ -55,7 +55,7 @@ export const metaTags: MetaType = {
 export const brandLinks = {
     mainUrl: 'https://viertatelier.com',
     instagram: 'https://www.instagram.com/viert_atelier',
-    whatsapp: 'https://wa.me/5521994308880',
+    whatsapp: 'https://wa.me/5521974575663',
   
 
 
