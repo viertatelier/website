@@ -13,7 +13,7 @@ const Midia: React.FC<MidiaItem> = ({ lightMode = "light" }) => {
       className={`
       flex
       gap-[20px]
-      text-[${lightMode === "light" ? "#fff" : "#000"}]
+      text-[#fff]
       text-[24px]
       font-bold
       items-center
