@@ -1,8 +1,7 @@
 import React from "react";
-import Layout from "@/layout/layout";
 import axios from "axios";
 import { Pictures } from "@/components/product-showcase/components";
-import { Header } from "@/components";
+import Header from "@/components/header-component/Header.component";
 import { Footer } from "@/sections";
 import { NavigationMobile } from "@/components/navigation-component";
 
