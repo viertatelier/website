@@ -154,6 +154,8 @@ export default class MyDocument extends Document {
           <meta name="author" content={metaTags.author.name} />
 
           <link rel="author" href={metaTags.author.href} />
+          
+          <meta name="facebook-domain-verification" content="pvuxa7yrcztva0jel8gkw7h4vxeupy"/>
         </Head>
         <body>
           <Main />

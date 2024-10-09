@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Header } from "@/components";
+import Header from "@/components/header-component/Header.component";
 import { HeroBackground, HeroContent } from "./components";
 import { usePathname } from "next/navigation";
 

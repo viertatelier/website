@@ -1,8 +1,8 @@
-import { CTA } from '@/components';
 import { useApp } from '@/context/AppContext';
 import React from 'react';
 import styles from './Content.module.scss';
 import MouseScrollIndicator from '@/components/mouse-scroll-component';
+import CTA from '@/components/cta-component/CTA.component';
 
 type ContentProps = {
   title: string;

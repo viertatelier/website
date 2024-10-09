@@ -1,4 +1,4 @@
-import { CTA } from "@/components";
+import CTA from "@/components/cta-component/CTA.component";
 import TitleDescriptionBtn from "@/components/titledescriptionbtn-component/TitleDescriptionBtn.component";
 import { useApp } from "@/context/AppContext";
 import { collections_data } from "@/data/collections-data";

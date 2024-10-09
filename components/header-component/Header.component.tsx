@@ -1,5 +1,8 @@
 import React from "react";
-import { Logo, Navigation, Midia, Hamburguer } from "@/components";
+import Midia from "@/components/midia-component/Midia.component";
+import {Navigation} from "@/components/navigation-component/Navigation.component";
+import Logo from "@/components/logo-component/Logo.component";
+import Hamburguer from "@/components/hamburguer-component/Hamburguer.component";
 import { useApp } from "@/context/AppContext";
 
 type HeaderProps = {

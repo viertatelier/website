@@ -1,4 +1,3 @@
-import MouseBlobity from '@/components/mouseblobity-component/MouseBlobity.component';
 import PageTransition from '@/components/pagetransition-component/PageTransitions.component';
 import { SmoothScrolling } from '@/components/SmoothScrolling-component';
 import { AppProvider } from '@/context/AppContext';
@@ -46,7 +45,6 @@ export function App({ Component, pageProps }: AppProps) {
               className={`${montserrat.className} ${baskervville.className}`}
             >
               <Component {...pageProps} />
-              <MouseBlobity />
             </main>
           </SmoothScrolling>
         </PageTransition>
