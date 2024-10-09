@@ -70,7 +70,7 @@ const Footer: React.FC<FooterProps> = ({ insta }) => {
           </div>
         </div>
 
-        {insta.length > 0 && (
+        {insta?.length > 0 && (
           <ul
             className={`lg:w-full flex flex-wrap justify-between gap-y-[2vh] lg:gap-[1.46vw] lg:justify-center mt-[7vh] md:mt-[120px] px-[2.04vw] lg:px-[unset]`}
           >
@@ -107,8 +107,8 @@ const Footer: React.FC<FooterProps> = ({ insta }) => {
       font-bold
       items-center
       my-4
-      mt-[${insta.length > 0 ? '7vh' : '5vh'}]
-      md:mt-[${insta.length > 0 ? '120px' : '0'}]
+      mt-[${insta?.length > 0 ? '7vh' : '5vh'}]
+      md:mt-[${insta?.length > 0 ? '120px' : '0'}]
     `}
           >
             {midia_data.map((midia) => (
