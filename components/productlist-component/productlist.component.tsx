@@ -25,10 +25,12 @@ const ProductList: React.FC<ProductListProps> = ({
     device: { isMobile },
   } = useApp();
   const [currentPage, setCurrentPage] = useState(0);
-  const [sortOrder, setSortOrder] = useState<'price-asc' | 'price-desc'>('price-asc');
+  const [sortOrder, setSortOrder] = useState<
+    'price-asc' | 'price-desc'
+  >('price-asc');
   const [filterOption, setFilterOption] = useState<string>(''); // Filtro por categoria
   const productListRef = useRef<HTMLDivElement | null>(null);
-  
+
   const productsPerPage = isMobile ? 8 : 12;
 
   const empty = products.length === 0;
@@ -78,11 +80,14 @@ const ProductList: React.FC<ProductListProps> = ({
   }, [filterOption, isMobile]);
 
   // Filtrar os produtos pelo título com base na categoria selecionada
-  const filteredProducts = filterOption && filterOption !== 'Todos os Produtos'
-    ? products.filter((product) =>
-        product.name.toLowerCase().includes(filterOption.toLowerCase()),
-      )
-    : products;
+  const filteredProducts =
+    filterOption && filterOption !== 'Todos os Produtos'
+      ? products.filter((product) =>
+          product.name
+            .toLowerCase()
+            .includes(filterOption.toLowerCase()),
+        )
+      : products;
 
   // Ordenar os produtos
   const sortedProducts = filteredProducts.sort((a, b) => {
@@ -95,7 +100,9 @@ const ProductList: React.FC<ProductListProps> = ({
   });
 
   // Atualizar o número total de páginas com base nos produtos filtrados
-  const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
+  const totalPages = Math.ceil(
+    sortedProducts.length / productsPerPage,
+  );
 
   // Produtos da página atual
   const currentProducts = sortedProducts.slice(
@@ -109,13 +116,18 @@ const ProductList: React.FC<ProductListProps> = ({
         {/* Filtro por categoria */}
         <div className="flex justify-between md:justify-center gap-3 items-center">
           <span>Filtrar por Categoria</span>
-          <Select onValueChange={(value) => setFilterOption(value)}>
+          <Select
+            onValueChange={(value) => setFilterOption(value)}
+          >
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Selecione uma categoria" />
+              <SelectValue placeholder="Categoria" />
             </SelectTrigger>
             <SelectContent>
               {categories.map((category) => (
-                <SelectItem key={category.id} value={category.title}>
+                <SelectItem
+                  key={category.id}
+                  value={category.title}
+                >
                   {category.title}
                 </SelectItem>
               ))}
@@ -126,13 +138,22 @@ const ProductList: React.FC<ProductListProps> = ({
         {/* Ordenação por preço */}
         <div className="flex justify-between md:justify-center gap-3 items-center">
           <span>Ordenar por</span>
-          <Select onValueChange={(value) => setSortOrder(value as 'price-asc' | 'price-desc')}>
+          <Select
+            onValueChange={(value) =>
+              setSortOrder(value as 'price-asc' | 'price-desc')
+            }
+            value={sortOrder}
+          >
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Ordenar" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="price-asc">Menor Preço</SelectItem>
-              <SelectItem value="price-desc">Maior Preço</SelectItem>
+              <SelectItem value="price-asc">
+                Menor Preço
+              </SelectItem>
+              <SelectItem value="price-desc">
+                Maior Preço
+              </SelectItem>
             </SelectContent>
           </Select>
         </div>
