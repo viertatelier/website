@@ -34,6 +34,22 @@ export default function ProductCard({
     }
   }, [isHovered]);
 
+  const prices = product.sku.map((sku) => {
+    return (sku as Sku).price_sale;
+  });
+
+  const minPrice = Math.min(...prices);
+
+  const colors = product.sku.map((sku) => {
+    return (sku as Sku).variations.filter(
+      (variation) => variation.name === 'Cor',
+    ).map((variation) => {
+      return variation.value;
+    });
+  }).flatMap((color) => color).filter((color, index, self) => {
+    return self.indexOf(color) === index;
+  });
+
   return (
     <div
       data-no-blobity
@@ -77,12 +93,10 @@ export default function ProductCard({
       <div className="flex flex-col items-start">
         <h3 className={'uppercase'}>{product.name}</h3>
         <p className="text-lg font-bold">
-          {currencyFormat((product.sku[0] as Sku).price_sale)}
+          {currencyFormat(minPrice)}
         </p>
         <p className={`text-[14px]`}>
-          {(product.sku[0] as Sku).variations?.find(
-            (variation) => variation.name === 'Cor',
-          )?.value || 'Cor sob consulta'}
+          {colors.join(', ')}
         </p>
       </div>
     </div>
