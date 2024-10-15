@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
 const withPWA = require('next-pwa')({
   dest: 'public',
+  scope: '/',
+  reloadOnOnline: false,
+  runtimeCaching: require('./cache.js'),
+  subdomainPrefix: '',
 });
+
 const path = require('path');
-// const runtimeCaching = require('next-pwa/cache')
-// const path = require('path');
-const runtimeCaching = require('./cache.js');
 
 const BASE_PATH = '';
 const BASE_URL = '/';
@@ -15,7 +17,7 @@ const settings = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  swcMinify: false,
+  swcMinify: false, // Aviso: isso será removido em futuras versões.
   basePath: BASE_PATH,
   publicRuntimeConfig: {},
   sassOptions: {
@@ -25,12 +27,6 @@ const settings = {
     INSTA_TOKEN: process.env.INSTA_TOKEN,
     BASE_PREFIX,
     BASE_URL,
-  },
-  pwa: {
-    scope: BASE_URL,
-    reloadOnOnline: false,
-    subdomainPrefix: BASE_PREFIX,
-    runtimeCaching,
   },
   images: {
     remotePatterns: [
@@ -42,7 +38,4 @@ const settings = {
   },
 };
 
-module.exports =
-  process.env.NODE_ENV === 'development'
-    ? settings
-    : withPWA(settings);
+module.exports = process.env.NODE_ENV === 'development' ? settings : withPWA(settings);
