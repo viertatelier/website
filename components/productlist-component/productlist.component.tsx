@@ -136,7 +136,7 @@ const ProductList: React.FC<ProductListProps> = ({
         </div>
 
         {/* Ordenação por preço */}
-        <div className="flex justify-between md:justify-center gap-3 items-center">
+        <div className="flex justify-between md:justify-center gap-3 items-center z-[99]">
           <span>Ordenar por</span>
           <Select
             onValueChange={(value) =>
@@ -164,7 +164,7 @@ const ProductList: React.FC<ProductListProps> = ({
         ref={productListRef}
         className={`${
           empty ? 'flex mt-10' : 'grid'
-        } grid-cols-2 container mx-auto lg:grid-cols-3 gap-x-[2.14vw] gap-y-[4.17vh] lg:gap-y-[5vh]`}
+        } grid-cols-2 container mx-auto lg:grid-cols-3 gap-x-[2.14vw] gap-y-[4.17vh] lg:gap-y-[5vh] z-[0]`}
       >
         {empty ? (
           <h1 className="text-2xl md:text-4xl text-center mx-auto">
