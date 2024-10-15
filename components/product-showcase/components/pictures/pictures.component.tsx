@@ -1,19 +1,19 @@
-import Image from "next/image";
-import React, { useState, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Thumbs } from "swiper/modules";
-import "swiper/swiper-bundle.css"; // CSS do Swiper
+import Image from 'next/image';
+import React, { useState, useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Thumbs } from 'swiper/modules';
+import 'swiper/swiper-bundle.css'; // CSS do Swiper
 
-import styles from "./pictures.module.scss";
+import styles from './pictures.module.scss';
 
-interface PicturesProps extends React.HTMLAttributes<HTMLDivElement> {
+interface PicturesProps {
   images: string[];
-};
+}
 
-const Pictures: React.FC<PicturesProps> = ({ images, ...props }) => {
+const Pictures: React.FC<PicturesProps> = ({ images }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  
+
   const mainSwiperRef = useRef<any>(null);
 
   const handleThumbnailClick = (index: number) => {
@@ -24,12 +24,19 @@ const Pictures: React.FC<PicturesProps> = ({ images, ...props }) => {
   };
 
   return (
-    <div className={styles.container} {...props}>
+    <div className={styles.container}>
       <div className={styles.principal}>
         <Swiper
-          onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+          onSlideChange={(swiper) =>
+            setActiveIndex(swiper.activeIndex)
+          }
           navigation
-          thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+          thumbs={{
+            swiper:
+              thumbsSwiper && !thumbsSwiper.destroyed
+                ? thumbsSwiper
+                : null,
+          }}
           modules={[Navigation, Thumbs]}
           className={styles.principalSwiper}
           spaceBetween={10}
@@ -43,7 +50,7 @@ const Pictures: React.FC<PicturesProps> = ({ images, ...props }) => {
                   src={image}
                   alt={`Imagem do Produto (${index + 1})`}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
             </SwiperSlide>
@@ -64,7 +71,7 @@ const Pictures: React.FC<PicturesProps> = ({ images, ...props }) => {
             <SwiperSlide
               key={index}
               className={`${styles.thumbnail} ${
-                activeIndex === index ? styles.active : ""
+                activeIndex === index ? styles.active : ''
               }`}
               onClick={() => handleThumbnailClick(index)}
             >
@@ -72,7 +79,7 @@ const Pictures: React.FC<PicturesProps> = ({ images, ...props }) => {
                 src={image}
                 alt={`Thumbnail (${index + 1})`}
                 fill
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: 'cover' }}
               />
             </SwiperSlide>
           ))}

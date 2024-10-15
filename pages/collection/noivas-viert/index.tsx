@@ -1,10 +1,12 @@
-import ProductList from "@/components/productlist-component/productlist.component";
-import Layout from "@/layout/layout";
-import { InstaItem } from "@/sections/footer-section/Footer.section";
-import { getEntries } from "@/services/useContentfulData";
-import { treatProducts } from "@/utils/treatedData";
-import axios from "axios";
-import Head from "next/head";
+import ProductList from '@/components/productlist-component/productlist.component';
+import Layout from '@/layout/layout';
+import { InstaItem } from '@/sections/footer-section/Footer.section';
+import {
+  getYampiCategory,
+  getYampiSkus,
+} from '@/services/useYampiData';
+import axios from 'axios';
+import Head from 'next/head';
 
 function NoivasViert({
   products,
@@ -27,19 +29,36 @@ function NoivasViert({
 }
 
 export const getStaticProps = async () => {
-  const [allProducts] = (await Promise.all([
-    getEntries({
-      contentType: "produtos",
+  const [allFestaProducts, skus] = (await Promise.all([
+    getYampiCategory({
+      categoryId: '5196208',
     }),
+    getYampiSkus(),
   ])) as any;
 
-  const products = treatProducts(allProducts).filter(
-    (product) => product.collection === "Viert Noivas"
+  const productsWithSkuSplit = allFestaProducts.data.map(
+    (product: any) => {
+      return {
+        ...product,
+        sku: product.sku.split(','),
+      };
+    },
   );
 
+  const products = productsWithSkuSplit.map((product: any) => {
+    const skusWithProduct = skus.data.filter((sku: any) =>
+      product.sku.includes(sku.sku),
+    );
+    return {
+      ...product,
+      skus: skusWithProduct,
+    };
+  });
+
   const token = process.env.INSTA_TOKEN;
-  const fields = "media_url,media_type,permalink";
+  const fields = 'media_url,media_type,permalink';
   const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
+
   try {
     const { data } = await axios.get(url);
 

@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import React, { useState, useEffect, useRef } from 'react';
 import { ProductCard } from '../ProductCard-component';
-import { Product } from '@/interfaces/contetfulData';
+import {
+  Product,
+  ProductYampi,
+} from '@/interfaces/contetfulData';
 import gsap from 'gsap';
 import { useApp } from '@/context/AppContext';
 import {
@@ -13,7 +16,7 @@ import {
 } from '@/components/ui/select';
 
 type ProductListProps = {
-  products: Product[];
+  products: ProductYampi[];
   collection: 'festas' | 'noivas';
 };
 
@@ -21,6 +24,7 @@ const ProductList: React.FC<ProductListProps> = ({
   products,
   collection,
 }) => {
+  console.log(products);
   const {
     device: { isMobile },
   } = useApp();
@@ -92,9 +96,9 @@ const ProductList: React.FC<ProductListProps> = ({
   // Ordenar os produtos
   const sortedProducts = filteredProducts.sort((a, b) => {
     if (sortOrder === 'price-asc') {
-      return a.price - b.price;
+      return a.skus[0]?.price_sale - b.skus[0]?.price_sale;
     } else if (sortOrder === 'price-desc') {
-      return b.price - a.price;
+      return b.skus[0]?.price_sale - a.skus[0]?.price_sale;
     }
     return 0;
   });
@@ -172,9 +176,9 @@ const ProductList: React.FC<ProductListProps> = ({
           </h1>
         ) : (
           currentProducts.map(
-            (product: Product, index: number) => (
+            (product: ProductYampi, index: number) => (
               <Link
-                href={`/collection/${collection}-viert/product/${product.entryId}`}
+                href={`/collection/${collection}-viert/product/${product.id}`}
                 key={index}
                 className="z-[999]"
               >

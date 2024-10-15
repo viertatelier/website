@@ -1,10 +1,12 @@
-import ProductList from "@/components/productlist-component/productlist.component";
-import Layout from "@/layout/layout";
-import { InstaItem } from "@/sections/footer-section/Footer.section";
-import { getEntries } from "@/services/useContentfulData";
-import { treatProducts } from "@/utils/treatedData";
-import axios from "axios";
-import Head from "next/head";
+import ProductList from '@/components/productlist-component/productlist.component';
+import Layout from '@/layout/layout';
+import { InstaItem } from '@/sections/footer-section/Footer.section';
+import {
+  getYampiCategory,
+  getYampiSkus,
+} from '@/services/useYampiData';
+import axios from 'axios';
+import Head from 'next/head';
 
 function FestasViert({
   products,
@@ -20,25 +22,41 @@ function FestasViert({
           <title>Festas Viert</title>
           <meta name="description" content="Festas Viert" />
         </Head>
-        <ProductList products={products} collection={"festas"} />
+        <ProductList products={products} collection={'festas'} />
       </section>
     </Layout>
   );
 }
 
 export const getStaticProps = async () => {
-  const [allProducts] = (await Promise.all([
-    getEntries({
-      contentType: "produtos",
+  const [allFestaProducts, skus] = (await Promise.all([
+    getYampiCategory({
+      categoryId: '5196207',
     }),
+    getYampiSkus(),
   ])) as any;
 
-  const products = treatProducts(allProducts).filter(
-    (product) => product.collection === "Viert Festas"
+  const productsWithSkuSplit = allFestaProducts.data.map(
+    (product: any) => {
+      return {
+        ...product,
+        sku: product.sku.split(','),
+      };
+    },
   );
 
+  const products = productsWithSkuSplit.map((product: any) => {
+    const skusWithProduct = skus.data.filter((sku: any) =>
+      product.sku.includes(sku.sku),
+    );
+    return {
+      ...product,
+      skus: skusWithProduct,
+    };
+  });
+
   const token = process.env.INSTA_TOKEN;
-  const fields = "media_url,media_type,permalink";
+  const fields = 'media_url,media_type,permalink';
   const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
 
   try {

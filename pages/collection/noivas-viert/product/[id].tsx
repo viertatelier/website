@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  getEntries,
   getSingleEntry,
 } from '@/services/useContentfulData';
 import Layout from '@/layout/layout';
@@ -12,6 +11,7 @@ import {
   InferGetStaticPropsType,
 } from 'next';
 import ProductSection from '@/sections/product-section';
+import { getYampiProductIds } from '@/services/useYampiData';
 
 const Product: React.FC<
   InferGetStaticPropsType<typeof getStaticProps>
@@ -23,14 +23,26 @@ const Product: React.FC<
   );
 };
 
+
 export const getStaticPaths: GetStaticPaths = async () => {
-  const entries = await getEntries({ contentType: 'produtos' });
-  const paths = entries.map((entry) => ({
-    params: { entryId: entry.sys.id },
-  }));
+  const productIds = await getYampiProductIds();
+
+  if (!productIds || productIds.length === 0) {
+    return {
+      paths: [],
+      fallback: true, // Ou false, dependendo da sua estratégia de fallback
+    };
+  }
+
+  const paths = productIds
+    .filter(id => id) // Filtrando IDs indefinidos
+    .map((id) => ({
+      params: { id: id.toString() },
+    }));
+
   return {
     paths,
-    fallback: true,
+    fallback: true, // Ou false, dependendo da sua estratégia de fallback
   };
 };
 

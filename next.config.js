@@ -23,6 +23,9 @@ const settings = {
   },
   env: {
     INSTA_TOKEN: process.env.INSTA_TOKEN,
+    YAMPI_TOKEN: process.env.YAMPI_TOKEN,
+    YAMPI_SECRET: process.env.YAMPI_SECRET,
+    YAMPI_ALIAS: process.env.YAMPI_ALIAS,
     BASE_PREFIX,
     BASE_URL,
   },
