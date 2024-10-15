@@ -137,8 +137,6 @@ export const getYampiProductImages = async ({
     } as any,
   });
 
-  console.log('getYampiProductImages', response);
-
   if (!response.ok) {
     throw new Error('Falha ao buscar produtos');
   }
@@ -169,8 +167,6 @@ export const getYampiSkus = async () => {
   }
 
   const data = await response.json(); // Ler o corpo aqui
-
-  console.log('getYampiSkus', data);
 
   return data;
 };

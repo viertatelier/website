@@ -1,10 +1,11 @@
 import { BreadCrumb } from '@/components/breadcrumb-component';
 import { ProductShowcase } from '@/components/product-showcase';
+import { ProductYampi } from '@/interfaces/contetfulData';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React from 'react';
 type ProductSectionProps = {
-  product: any;
+  product: ProductYampi;
 };
 
 const ProductSection: React.FC<ProductSectionProps> = ({
@@ -19,7 +20,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
   return (
     <>
       <Head>
-        <title>{product.title}</title>
+        <title>{product.name}</title>
       </Head>
       <BreadCrumb />
       <ProductShowcase product={product} />

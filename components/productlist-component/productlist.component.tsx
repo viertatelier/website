@@ -4,6 +4,7 @@ import { ProductCard } from '../ProductCard-component';
 import {
   Product,
   ProductYampi,
+  Sku,
 } from '@/interfaces/contetfulData';
 import gsap from 'gsap';
 import { useApp } from '@/context/AppContext';
@@ -24,7 +25,6 @@ const ProductList: React.FC<ProductListProps> = ({
   products,
   collection,
 }) => {
-  console.log(products);
   const {
     device: { isMobile },
   } = useApp();
@@ -96,9 +96,15 @@ const ProductList: React.FC<ProductListProps> = ({
   // Ordenar os produtos
   const sortedProducts = filteredProducts.sort((a, b) => {
     if (sortOrder === 'price-asc') {
-      return a.skus[0]?.price_sale - b.skus[0]?.price_sale;
+      return (
+        (a.sku[0] as Sku)?.price_sale -
+        (b.sku[0] as Sku)?.price_sale
+      );
     } else if (sortOrder === 'price-desc') {
-      return b.skus[0]?.price_sale - a.skus[0]?.price_sale;
+      return (
+        (b.sku[0] as Sku)?.price_sale -
+        (a.sku[0] as Sku)?.price_sale
+      );
     }
     return 0;
   });

@@ -25,8 +25,8 @@ const baskerville = Baskervville({
 });
 
 type InfosProps = {
-  colors?: string[];
-  sizes?: string[];
+  colors: string[];
+  sizes: string[];
   description: string;
   name: string;
   price: number;

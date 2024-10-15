@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  getSingleEntry,
-} from '@/services/useContentfulData';
+import { getSingleEntry } from '@/services/useContentfulData';
 import Layout from '@/layout/layout';
 import axios from 'axios';
 import { InstaItem } from '@/sections/footer-section/Footer.section';
@@ -11,7 +9,11 @@ import {
   InferGetStaticPropsType,
 } from 'next';
 import ProductSection from '@/sections/product-section';
-import { getYampiProductIds } from '@/services/useYampiData';
+import {
+  getYampiCategory,
+  getYampiProductIds,
+  getYampiSkus,
+} from '@/services/useYampiData';
 
 const Product: React.FC<
   InferGetStaticPropsType<typeof getStaticProps>
@@ -22,7 +24,6 @@ const Product: React.FC<
     </Layout>
   );
 };
-
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const productIds = await getYampiProductIds();
@@ -35,7 +36,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 
   const paths = productIds
-    .filter(id => id) // Filtrando IDs indefinidos
+    .filter((id) => id) // Filtrando IDs indefinidos
     .map((id) => ({
       params: { id: id.toString() },
     }));
@@ -47,14 +48,41 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps = (async ({ params }) => {
+  const { id } = params!; // Recebe o id da URL
+
+  // Faz a busca de um único produto
+  const [allNoivasProducts, skus] = (await Promise.all([
+    getYampiCategory({
+      categoryId: '5196208',
+    }),
+    getYampiSkus(),
+  ])) as any;
+
+  const product = allNoivasProducts.data.find((product: any) => {
+    return product.id == id;
+  });
+
+  // Split do sku no produto para array, caso seja necessário
+  const productWithSkuSplit = {
+    ...product,
+    sku: product.sku.split(','),
+  };
+
+  // Filtra os skus correspondentes ao produto
+  const skusWithProduct = skus.data.filter((sku: any) =>
+    productWithSkuSplit.sku.includes(sku.sku),
+  );
+
+  // Juntando os SKUs ao produto
+  const productWithSkus = {
+    ...productWithSkuSplit,
+    sku: skusWithProduct,
+  };
+
+  // Pegando os dados do Instagram
   const token = process.env.INSTA_TOKEN;
   const fields = 'media_url,media_type,permalink';
   const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
-
-  // Buscando os dados do produto pelo `entryId`
-  const product = await getSingleEntry({
-    entryId: params?.entryId as string,
-  });
 
   try {
     const { data } = await axios.get(url);
@@ -62,7 +90,7 @@ export const getStaticProps = (async ({ params }) => {
     return {
       props: {
         insta: data.data,
-        product,
+        product: productWithSkus,
       },
       revalidate: 86400, // 1 day
     };
@@ -70,7 +98,7 @@ export const getStaticProps = (async ({ params }) => {
     return {
       props: {
         insta: [],
-        product,
+        product: productWithSkus,
       },
       revalidate: 86400, // 1 day
     };

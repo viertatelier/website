@@ -8,7 +8,11 @@ import {
   InferGetStaticPropsType,
 } from 'next';
 import ProductSection from '@/sections/product-section';
-import { getYampiProduct, getYampiProductIds, getYampiSkus } from '@/services/useYampiData';
+import {
+  getYampiCategory,
+  getYampiProductIds,
+  getYampiSkus,
+} from '@/services/useYampiData';
 
 const Product: React.FC<
   InferGetStaticPropsType<typeof getStaticProps>
@@ -31,7 +35,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 
   const paths = productIds
-    .filter(id => id) // Filtrando IDs indefinidos
+    .filter((id) => id) // Filtrando IDs indefinidos
     .map((id) => ({
       params: { id: id.toString() },
     }));
@@ -43,24 +47,41 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps = (async ({ params }) => {
+  const { id } = params!; // Recebe o id da URL
+
+  // Faz a busca de um único produto
+  const [allFestaProducts, skus] = (await Promise.all([
+    getYampiCategory({
+      categoryId: '5196207',
+    }),
+    getYampiSkus(),
+  ])) as any;
+
+  const product = allFestaProducts.data.find((product: any) => {
+    return product.id == id;
+  });
+
+  // Split do sku no produto para array, caso seja necessário
+  const productWithSkuSplit = {
+    ...product,
+    sku: product.sku.split(','),
+  };
+
+  // Filtra os skus correspondentes ao produto
+  const skusWithProduct = skus.data.filter((sku: any) =>
+    productWithSkuSplit.sku.includes(sku.sku),
+  );
+
+  // Juntando os SKUs ao produto
+  const productWithSkus = {
+    ...productWithSkuSplit,
+    sku: skusWithProduct,
+  };
+
+  // Pegando os dados do Instagram
   const token = process.env.INSTA_TOKEN;
   const fields = 'media_url,media_type,permalink';
   const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
-
-  // Buscando os dados do produto pelo `entryId`
-  const festaProduct = await getYampiProduct({
-    productId: Number(params?.id || 0),
-  });
-
-  const skus = await getYampiSkus();
-  
-  const productWithSkuSplit = festaProduct.data.sku.split(',')
-
-  const product = skus.data.filter((sku: any) =>
-    productWithSkuSplit.includes(sku.sku),
-  );
-
-  console.log('productssssss', product);
 
   try {
     const { data } = await axios.get(url);
@@ -68,7 +89,7 @@ export const getStaticProps = (async ({ params }) => {
     return {
       props: {
         insta: data.data,
-        product: product[0],
+        product: productWithSkus,
       },
       revalidate: 86400, // 1 day
     };
@@ -76,7 +97,7 @@ export const getStaticProps = (async ({ params }) => {
     return {
       props: {
         insta: [],
-        product: product[0],
+        product: productWithSkus,
       },
       revalidate: 86400, // 1 day
     };

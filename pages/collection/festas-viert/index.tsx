@@ -1,4 +1,5 @@
 import ProductList from '@/components/productlist-component/productlist.component';
+import { ProductYampi } from '@/interfaces/contetfulData';
 import Layout from '@/layout/layout';
 import { InstaItem } from '@/sections/footer-section/Footer.section';
 import {
@@ -12,7 +13,7 @@ function FestasViert({
   products,
   insta,
 }: {
-  products: any;
+  products: ProductYampi[];
   insta: InstaItem[];
 }) {
   return (
@@ -51,7 +52,7 @@ export const getStaticProps = async () => {
     );
     return {
       ...product,
-      skus: skusWithProduct,
+      sku: skusWithProduct,
     };
   });
 

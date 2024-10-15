@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
-import { ProductYampi } from '@/interfaces/contetfulData';
+import { ProductYampi, Sku } from '@/interfaces/contetfulData';
 import styles from './ProductCard.module.scss';
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap'; // Importando GSAP
@@ -16,6 +16,10 @@ export default function ProductCard({
 }: {
   product: ProductYampi;
 }) {
+  const images = product.images.data.map(
+    (image) => image.large.url,
+  );
+
   const [isHovered, setIsHovered] = useState(false);
   const imageRef1 = useRef<HTMLDivElement>(null);
   const imageRef2 = useRef<HTMLDivElement>(null);
@@ -41,7 +45,7 @@ export default function ProductCard({
           aspectRatio: 0.688,
         }}
         onMouseEnter={() => {
-          if (product.preview_url.length > 1) setIsHovered(true);
+          if (images.length > 1) setIsHovered(true);
         }}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -51,19 +55,19 @@ export default function ProductCard({
         >
           <Image
             fill
-            src={''} // Primeira imagem
+            src={images[0]} // Primeira imagem
             alt="Product"
             className="object-cover bg-center"
           />
         </div>
-        {product.preview_url.length > 1 && (
+        {images.length > 1 && (
           <div
             ref={imageRef2}
             className="absolute inset-0 opacity-0"
           >
             <Image
               fill
-              src={''} // Segunda imagem
+              src={images[1]} // Segunda imagem
               alt="Product Hover"
               className="object-cover bg-center"
             />
@@ -73,10 +77,12 @@ export default function ProductCard({
       <div className="flex flex-col items-start">
         <h3 className={'uppercase'}>{product.name}</h3>
         <p className="text-lg font-bold">
-          {currencyFormat(product.shipping_price)}
+          {currencyFormat((product.sku[0] as Sku).price_sale)}
         </p>
         <p className={`text-[14px]`}>
-          Cores sob consulta
+          {(product.sku[0] as Sku).variations?.find(
+            (variation) => variation.name === 'Cor',
+          )?.value || 'Cor sob consulta'}
         </p>
       </div>
     </div>

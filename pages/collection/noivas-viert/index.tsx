@@ -29,14 +29,15 @@ function NoivasViert({
 }
 
 export const getStaticProps = async () => {
-  const [allFestaProducts, skus] = (await Promise.all([
+  const [allNoivasProducts, skus] = (await Promise.all([
     getYampiCategory({
       categoryId: '5196208',
     }),
     getYampiSkus(),
   ])) as any;
 
-  const productsWithSkuSplit = allFestaProducts.data.map(
+
+    const productsWithSkuSplit = allNoivasProducts.data.map(
     (product: any) => {
       return {
         ...product,
@@ -45,13 +46,13 @@ export const getStaticProps = async () => {
     },
   );
 
-  const products = productsWithSkuSplit.map((product: any) => {
+    const products = productsWithSkuSplit.map((product: any) => {
     const skusWithProduct = skus.data.filter((sku: any) =>
       product.sku.includes(sku.sku),
     );
     return {
       ...product,
-      skus: skusWithProduct,
+      sku: skusWithProduct,
     };
   });
 

@@ -2,50 +2,50 @@ import React, { useCallback, useEffect, useState } from 'react';
 import styles from './ProductShowcase.module.scss';
 import { Infos, Pictures } from './components';
 import { getYampiProductImages } from '@/services/useYampiData';
+import { ProductYampi, Sku } from '@/interfaces/contetfulData';
 
 type ProductShowcaseProps = {
-  product: any;
+  product: ProductYampi;
 };
 
 const ProductShowcase: React.FC<ProductShowcaseProps> = ({
   product,
 }) => {
-  console.log('product', product);
-  const [images, setImages] = useState<string[]>([]);
-
-  const fetchAllSkus = useCallback(async () => {
-    if (!product.skus || product.skus?.length === 0) {
-      const image = await getYampiProductImages({
-        sku: product.sku,
-      });
-      console.log('image', image);
-      setImages(image.data);
-    } else {
-      product.skus.map(async (sku: string) => {
-        const images = await getYampiProductImages({
-          sku,
-        });
-
-        console.log('images', images);
-        setImages(images.data);
-      });
-    }
-  }, [product]);
-
-  useEffect(() => {
-    fetchAllSkus();
-  }, [fetchAllSkus]);
-
   if (!product) return null;
+
+  const images = product.images.data.map(
+    (image) => image.large.url,
+  );
+
+  const colors = product.sku
+    .map((sku) => {
+      return (sku as Sku).variations.find(
+        (variation) => variation.name === 'Cor',
+      )?.value;
+    })
+    .filter(
+      (value, index, self) => self.indexOf(value) === index,
+    );
+
+  const sizes = product.sku
+    .map((sku) => {
+      return (sku as Sku).variations.find(
+        (variation) => variation.name === 'Tamanho',
+      )?.value;
+    })
+    .filter(
+      (value, index, self) => self.indexOf(value) === index,
+    );
 
   return (
     <div className={styles.product}>
       <Pictures images={images} />
       <Infos
-        description={product.description}
-        name={product.title}
-        price={product.price}
-        colors={product.colors}
+        description={product.name} // TODO: ACHAR A DESCRIÇÃO DO PRODUTO
+        name={product.name}
+        price={(product.sku as Sku[])[0].price_sale}
+        colors={colors as string[]}
+        sizes={sizes as string[]}
       />
     </div>
   );

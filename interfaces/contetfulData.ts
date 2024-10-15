@@ -129,7 +129,7 @@ interface Variation {
   value_id: number;
 }
 
-interface Sku {
+export interface Sku {
   id: number;
   product_id: number;
   seller_id: number | null;
@@ -191,7 +191,7 @@ export interface ProductYampi {
   shipping_price: string;
   name: string;
   slug: string;
-  sku: string[];
+  sku: string[] | Sku[];
   rating: number;
   priority: number;
   url: string;
@@ -201,7 +201,6 @@ export interface ProductYampi {
   images: {
     data: ProductImage[];
   };
-  skus: Sku[];
 }
 
 export interface YampiResponse {
