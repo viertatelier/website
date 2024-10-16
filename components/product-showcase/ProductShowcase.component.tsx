@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import styles from './ProductShowcase.module.scss';
 import { Infos, Pictures } from './components';
-import { getYampiProductImages } from '@/services/useYampiData';
 import { ProductYampi, Sku } from '@/interfaces/contetfulData';
 
 type ProductShowcaseProps = {
@@ -35,7 +34,17 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({
     })
     .filter(
       (value, index, self) => self.indexOf(value) === index,
-    );
+  );
+  
+   const prices = product.sku.map((sku) => {
+    return (sku as Sku).price_sale;
+  });
+
+  const minPrice = Math.min(...prices);
+
+  console.log('product', JSON.stringify(product, null, 2));
+
+  // const description = 
 
   return (
     <div className={styles.product}>
@@ -43,7 +52,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({
       <Infos
         description={product.name} // TODO: ACHAR A DESCRIÇÃO DO PRODUTO
         name={product.name}
-        price={(product.sku as Sku[])[0].price_sale}
+        price={minPrice}
         colors={colors as string[]}
         sizes={sizes as string[]}
       />
