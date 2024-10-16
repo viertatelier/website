@@ -161,7 +161,7 @@ export default class MyDocument extends Document {
           />
           <meta
             name="google-adsense-account"
-            content="ca-pub-7264556982952268"
+            content="ca-pub-8009393785731572"
           />
         </Head>
         <body>
