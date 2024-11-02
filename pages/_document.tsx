@@ -163,6 +163,11 @@ export default class MyDocument extends Document {
             name="google-adsense-account"
             content="ca-pub-8009393785731572"
           />
+
+          <meta
+            name="google-site-verification"
+            content="8ZHIlHH0VsuhYFg7XYcyjofUMIzBsUaSG-Ju1IGqjR8"
+          />
         </Head>
         <body>
           <Main />
