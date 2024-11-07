@@ -6,11 +6,11 @@ import 'swiper/swiper-bundle.css'; // CSS do Swiper
 
 import styles from './pictures.module.scss';
 
-interface PicturesProps {
+interface PicturesProps extends React.HTMLAttributes<HTMLDivElement> {
   images: string[];
 }
 
-const Pictures: React.FC<PicturesProps> = ({ images }) => {
+const Pictures: React.FC<PicturesProps> = ({ images }, ...props) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -24,7 +24,7 @@ const Pictures: React.FC<PicturesProps> = ({ images }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} {...props}>
       <div className={styles.principal}>
         <Swiper
           onSlideChange={(swiper) =>
