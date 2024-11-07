@@ -80,14 +80,11 @@ export function App({ Component, pageProps }: AppProps) {
         }}
       />
       <Script
-        id='gtm-script'
+        id="gtm-script"
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-Y8VN1KJJZP"
       ></Script>
-      <Script
-        id='gtm-script-2'
-        strategy='lazyOnload'
-      >
+      <Script id="gtm-script-2" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -96,6 +93,11 @@ export function App({ Component, pageProps }: AppProps) {
           gtag('config', 'G-Y8VN1KJJZP');
         `}
       </Script>
+
+      <Script
+        type="text/javascript"
+        src="https://smartarget.online/loader.js?u=c85b7706d4dd744c3b346b29cccf2ff6d51a47ec"
+      ></Script>
     </>
   );
 }
