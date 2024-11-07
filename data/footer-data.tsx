@@ -24,7 +24,7 @@ export const footer_data = {
     },
   ],
   scheduleVisitText: (
-    <a href="https://api.whatsapp.com/send?phone=5521974575663&text=Ol%C3%A1!%20Gostaria%20de%20marcar%20uma%20visita!">
+    <a href="https://api.whatsapp.com/send?phone=5521967502610&text=Ol%C3%A1!%20Gostaria%20de%20marcar%20uma%20visita!">
       <p>
         <u>MARQUE SUA VISITA</u>
       </p>
