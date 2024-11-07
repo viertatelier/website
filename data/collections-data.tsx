@@ -68,7 +68,7 @@ export const collections_data = {
       "Nosso atelier está aberto de segunda a sexta, das 10h às 19h, atendendo exclusivamente com hora marcada.",
     cta: {
       text: "Agendar Visita",
-      link: "https://wa.me/5521974575663?text=Ol%C3%A1!%20Estou%20interessado(a)%20em%20agendar%20uma%20visita%20ao%20atelier.%20Podemos%20combinar%20um%20hor%C3%A1rio%3F",
+      link: "https://wa.me/5521967502610?text=Ol%C3%A1!%20Estou%20interessado(a)%20em%20agendar%20uma%20visita%20ao%20atelier.%20Podemos%20combinar%20um%20hor%C3%A1rio%3F",
     },
   },
 };
