@@ -69,7 +69,7 @@ const Infos: React.FC<InfosProps> = ({
       message += ` no tamanho ${sizeSelected}`;
     }
 
-    const url = `https://api.whatsapp.com/send?phone=5521967502610&text=${encodeURIComponent(
+    const url = `https://api.whatsapp.com/send?phone=5521974575663&text=${encodeURIComponent(
       message
     )}`;
     window.open(url, "_blank");
